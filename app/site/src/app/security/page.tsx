@@ -140,6 +140,58 @@ export default function SecurityPage() {
           </PracticesList>
         </Section>
 
+        {/* Audits & Formal Proofs */}
+        <Section>
+          <SectionTitle>Audits & Formal Proofs</SectionTitle>
+          <AuditGrid>
+            <AuditCard href="https://github.com/luxfi/audits" target="_blank" rel="noopener noreferrer">
+              <AuditName>Independent Security Audits</AuditName>
+              <AuditDescription>
+                Full list of third-party security reviews of the Lux Network,
+                consensus, EVM, bridge, and smart contracts — open for public
+                review at github.com/luxfi/audits.
+              </AuditDescription>
+            </AuditCard>
+            <AuditCard href="https://github.com/luxfi/proofs" target="_blank" rel="noopener noreferrer">
+              <AuditName>Formal Verification (Lean4, TLA+, Tamarin)</AuditName>
+              <AuditDescription>
+                Machine-checked proofs of Quasar certificate soundness,
+                post-quantum finality without BLS, and protocol safety —
+                github.com/luxfi/proofs.
+              </AuditDescription>
+            </AuditCard>
+            <AuditCard href="https://github.com/luxfi/papers/tree/main/lux-master-security-model" target="_blank" rel="noopener noreferrer">
+              <AuditName>Master Security Model</AuditName>
+              <AuditDescription>
+                Comprehensive security model of the Lux Network: threat model,
+                assumptions, reductions, and defense-in-depth.
+              </AuditDescription>
+            </AuditCard>
+            <AuditCard href="https://github.com/luxfi/papers/tree/main/lux-hsm-boundary" target="_blank" rel="noopener noreferrer">
+              <AuditName>HSM Trust Boundary</AuditName>
+              <AuditDescription>
+                How keys flow between HSMs, threshold MPC, and on-chain
+                signing — with the attacker model and key-custody proofs.
+              </AuditDescription>
+            </AuditCard>
+            <AuditCard href="https://github.com/luxfi/papers/tree/main/lux-smart-contract-auditing" target="_blank" rel="noopener noreferrer">
+              <AuditName>Smart Contract Auditing Methodology</AuditName>
+              <AuditDescription>
+                The review process, tooling (Slither, Halmos, Foundry
+                invariants), and acceptance criteria for contracts shipping to
+                mainnet.
+              </AuditDescription>
+            </AuditCard>
+            <AuditCard href="/research">
+              <AuditName>Research Index</AuditName>
+              <AuditDescription>
+                Every paper across Lux, Hanzo, and Zoo — consensus, PQ crypto,
+                FHE, threshold signing, DeFi, and AI safety.
+              </AuditDescription>
+            </AuditCard>
+          </AuditGrid>
+        </Section>
+
         {/* Bug Bounty */}
         <Section>
           <BugBountyCard>
@@ -330,6 +382,44 @@ const PracticeTitle = styled.h3`
 `;
 
 const PracticeText = styled.p`
+  color: #888;
+  font-size: 14px;
+  line-height: 1.6;
+`;
+
+const AuditGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const AuditCard = styled(Link)`
+  display: block;
+  background: #0a0a0a;
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 20px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: #333;
+    transform: translateY(-1px);
+  }
+`;
+
+const AuditName = styled.h3`
+  color: #FAFAFA;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+`;
+
+const AuditDescription = styled.p`
   color: #888;
   font-size: 14px;
   line-height: 1.6;

@@ -395,6 +395,58 @@ export default function Products() {
         <ProductGrid products={complianceProducts} />
       </Section>
 
+      <Section>
+        <SectionHeader>
+          <SectionTitle>Open Source</SectionTitle>
+          <SectionSubtitle>
+            The whole stack is OSS. Every protocol, every precompile, every
+            paper — auditable source, reproducible builds, formal proofs.
+          </SectionSubtitle>
+        </SectionHeader>
+        <CardGrid $cols={4}>
+          <Link href="https://github.com/luxfi" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+            <Card $accent="#67E8F9">
+              <CardIcon $color="#67E8F9"><LayersIcon /></CardIcon>
+              <CardTitle>github.com/luxfi</CardTitle>
+              <CardDescription>
+                Node, consensus, EVM, crypto, MPC, bridge, DEX, wallet — 300+ repos
+                for the Lux Network and finance stack.
+              </CardDescription>
+            </Card>
+          </Link>
+          <Link href="https://github.com/hanzoai" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+            <Card $accent="#FDE68A">
+              <CardIcon $color="#FDE68A"><AgentIcon /></CardIcon>
+              <CardTitle>github.com/hanzoai</CardTitle>
+              <CardDescription>
+                LLM gateway, agents, Jin multimodal, ASO, DSO, post-quantum crypto,
+                and MCP infrastructure for AI.
+              </CardDescription>
+            </Card>
+          </Link>
+          <Link href="https://github.com/zooai" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+            <Card $accent="#BEF264">
+              <CardIcon $color="#BEF264"><GlobeIcon /></CardIcon>
+              <CardTitle>github.com/zooai</CardTitle>
+              <CardDescription>
+                DeSci research, conservation AI, Zoo Gym, federated wildlife
+                monitoring, and ZIP governance.
+              </CardDescription>
+            </Card>
+          </Link>
+          <Link href="/open-source" style={{ textDecoration: "none" }}>
+            <Card $accent="#A855F7">
+              <CardIcon $color="#A855F7"><ApiIcon /></CardIcon>
+              <CardTitle>Curated Project Catalog</CardTitle>
+              <CardDescription>
+                80+ hand-picked open-source projects across network, EVM, crypto,
+                MPC, bridge, DeFi, FHE, wallets, AI and storage.
+              </CardDescription>
+            </Card>
+          </Link>
+        </CardGrid>
+      </Section>
+
       <CTASection>
         <CTATitle>Ready to build?</CTATitle>
         <CTASubtitle>

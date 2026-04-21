@@ -106,10 +106,24 @@ const footerNav: Record<string, FooterNavSection> = {
   research: {
     title: "Research",
     items: [
+      { label: "All Papers", href: "/research" },
+      { label: "Lux Papers", href: "https://github.com/luxfi/papers", external: true },
+      { label: "Lux Proofs", href: "https://github.com/luxfi/proofs", external: true },
+      { label: "Lux Audits", href: "https://github.com/luxfi/audits", external: true },
+      { label: "Hanzo Papers", href: "https://github.com/hanzoai/papers", external: true },
+      { label: "Zoo Papers", href: "https://github.com/zooai/papers", external: true },
       { label: "Lux Protocol Specs", href: "https://lps.lux.network", external: true },
-      { label: "DAO Governance", href: "https://lps.lux.network/docs/lp-8850", external: true },
-      { label: "KMS Architecture", href: "https://lps.lux.network/docs/lp-0070", external: true },
-      { label: "Post-Quantum Crypto", href: "https://lps.lux.network/docs/lp-2200", external: true },
+    ],
+  },
+  opensource: {
+    title: "Open Source",
+    items: [
+      { label: "All Projects", href: "/open-source" },
+      { label: "Lux on GitHub", href: "https://github.com/luxfi", external: true },
+      { label: "Hanzo on GitHub", href: "https://github.com/hanzoai", external: true },
+      { label: "Zoo on GitHub", href: "https://github.com/zooai", external: true },
+      { label: "Hanzo S3", href: "https://github.com/hanzos3", external: true },
+      { label: "Lux Proposals (LPs)", href: "https://github.com/luxfi/LPs", external: true },
     ],
   },
   legal: {
