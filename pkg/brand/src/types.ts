@@ -186,6 +186,7 @@ export interface BrandConfig {
   domains: {
     primary: string;
     app: string;
+    admin?: string;
     api?: string;
     docs?: string;
     support?: string;

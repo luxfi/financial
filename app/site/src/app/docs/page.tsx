@@ -4,80 +4,82 @@ import styled from "styled-components";
 import Link from "next/link";
 import { CustomButton } from "@/components/Button";
 
+const DOCS = "https://docs.lux.financial/docs";
+
 const docCategories = [
   {
     title: "Getting Started",
-    description: "Quick start guides and tutorials to get up and running",
+    description: "Onboard in minutes — sandbox keys, first call, production access.",
     icon: RocketIcon,
     links: [
-      { title: "Quick Start Guide", href: "https://docs.lux.financial/quickstart" },
-      { title: "Authentication", href: "https://docs.lux.financial/auth" },
-      { title: "Making Your First API Call", href: "https://docs.lux.financial/first-call" },
-      { title: "Sandbox Environment", href: "https://docs.lux.financial/sandbox" },
+      { title: "Onboarding", href: `${DOCS}/onboarding` },
+      { title: "Trading Overview", href: `${DOCS}/trading` },
+      { title: "Benchmarks", href: `${DOCS}/benchmarks` },
+      { title: "Skills", href: `${DOCS}/skills` },
     ],
   },
   {
     title: "API Reference",
-    description: "Complete API documentation with examples",
+    description: "REST endpoints, request/response schemas, error codes.",
     icon: CodeIcon,
     links: [
-      { title: "Accounts API", href: "https://docs.lux.financial/api/accounts" },
-      { title: "Payments API", href: "https://docs.lux.financial/api/payments" },
-      { title: "FX API", href: "https://docs.lux.financial/api/fx" },
-      { title: "Webhooks", href: "https://docs.lux.financial/api/webhooks" },
+      { title: "Full API Reference", href: `${DOCS}/api-reference-full` },
+      { title: "Exchange API", href: `${DOCS}/exchange-api` },
+      { title: "Orders", href: `${DOCS}/orders` },
+      { title: "Market Data", href: `${DOCS}/market-data` },
     ],
   },
   {
-    title: "SDKs & Libraries",
-    description: "Official client libraries for popular languages",
+    title: "Real-Time & Low-Latency",
+    description: "WebSocket streams, FIX 4.4, and ZAP binary protocol.",
     icon: PackageIcon,
     links: [
-      { title: "Node.js SDK", href: "https://docs.lux.financial/sdk/node" },
-      { title: "Python SDK", href: "https://docs.lux.financial/sdk/python" },
-      { title: "Go SDK", href: "https://docs.lux.financial/sdk/go" },
-      { title: "REST API", href: "https://docs.lux.financial/sdk/rest" },
+      { title: "WebSocket Streams", href: `${DOCS}/websocket` },
+      { title: "HFT & Co-Location", href: `${DOCS}/hft` },
+      { title: "ZAP Wire Protocol", href: `${DOCS}/zap` },
+      { title: "Execution & Algos", href: `${DOCS}/execution` },
     ],
   },
   {
-    title: "Guides",
-    description: "Step-by-step tutorials for common use cases",
+    title: "Venues & Asset Classes",
+    description: "CEX, DEX, AMM, broker-dealer integration, and asset coverage.",
     icon: BookIcon,
     links: [
-      { title: "Implementing KYC", href: "https://docs.lux.financial/guides/kyc" },
-      { title: "Cross-Border Payments", href: "https://docs.lux.financial/guides/cross-border" },
-      { title: "Stablecoin Integration", href: "https://docs.lux.financial/guides/stablecoins" },
-      { title: "White-Label Setup", href: "https://docs.lux.financial/guides/white-label" },
+      { title: "Broker-Dealers", href: `${DOCS}/broker-dealers` },
+      { title: "DEX", href: `${DOCS}/dex` },
+      { title: "EVM Contracts", href: `${DOCS}/evm` },
+      { title: "Blockchain Settlement", href: `${DOCS}/blockchain` },
     ],
   },
   {
-    title: "Security",
-    description: "Security best practices and compliance",
+    title: "Security & Compliance",
+    description: "Post-quantum crypto, FHE, MPC custody, multi-jurisdiction compliance.",
     icon: ShieldIcon,
     links: [
-      { title: "Security Overview", href: "https://docs.lux.financial/security" },
-      { title: "API Key Management", href: "https://docs.lux.financial/security/api-keys" },
-      { title: "Webhook Verification", href: "https://docs.lux.financial/security/webhooks" },
-      { title: "Compliance", href: "https://docs.lux.financial/security/compliance" },
+      { title: "Post-Quantum Security", href: `${DOCS}/quantum` },
+      { title: "Fully Homomorphic Encryption", href: `${DOCS}/fhe` },
+      { title: "Compliance (KYC/AML/SAR)", href: `${DOCS}/compliance-full` },
+      { title: "GPU Acceleration", href: `${DOCS}/gpu` },
     ],
   },
   {
-    title: "Changelog",
-    description: "Latest updates and API changes",
+    title: "SDKs & Agents",
+    description: "Client libraries, Model Context Protocol, and agentic access.",
     icon: HistoryIcon,
     links: [
-      { title: "API Changelog", href: "https://docs.lux.financial/changelog" },
-      { title: "SDK Releases", href: "https://docs.lux.financial/releases" },
-      { title: "Migration Guides", href: "https://docs.lux.financial/migrations" },
-      { title: "Deprecations", href: "https://docs.lux.financial/deprecations" },
+      { title: "SDKs", href: `${DOCS}/sdk` },
+      { title: "MCP", href: `${DOCS}/mcp` },
+      { title: "Agentic Trading", href: `${DOCS}/agentic-trading` },
+      { title: "Docs Index", href: "https://docs.lux.financial" },
     ],
   },
 ];
 
 const popularDocs = [
-  { title: "API Quick Start", description: "Get started in 5 minutes", href: "https://docs.lux.financial/quickstart" },
-  { title: "Webhook Events", description: "Real-time event notifications", href: "https://docs.lux.financial/webhooks" },
-  { title: "Error Handling", description: "Handle errors gracefully", href: "https://docs.lux.financial/errors" },
-  { title: "Rate Limits", description: "API rate limiting explained", href: "https://docs.lux.financial/rate-limits" },
+  { title: "Full API Reference", description: "Every endpoint, every schema", href: `${DOCS}/api-reference-full` },
+  { title: "HFT & Co-Location", description: "Sub-ms latency, FIX 4.4, ZAP", href: `${DOCS}/hft` },
+  { title: "Agentic Trading", description: "MCP-native trading for AI agents", href: `${DOCS}/agentic-trading` },
+  { title: "Post-Quantum", description: "End-to-end ML-DSA / ML-KEM", href: `${DOCS}/quantum` },
 ];
 
 function RocketIcon() {

@@ -56,52 +56,60 @@ const DeFiIcon = () => (
   </svg>
 );
 
-const industries = [
-  {
-    icon: BankIcon,
-    title: "Fintechs & Neobanks",
-    description: "Launch banking products without building from scratch. White-label accounts, cards, and payment rails.",
-    features: ["Branded account provisioning", "Card issuance ready", "Compliance tools included"],
-  },
+const DOCS = "https://docs.lux.financial/docs";
+
+const tradingCapabilities = [
   {
     icon: ExchangeIcon,
-    title: "Exchanges & Trading",
-    description: "Launch CEX or DEX platforms with institutional liquidity. White-label exchange infrastructure.",
-    features: ["CEX & DEX platforms", "Institutional liquidity", "Trading APIs"],
+    title: "CEX Matching Engine",
+    description: "Sub-millisecond CLOB with price-time priority. REST, WebSocket, FIX 4.4, and ZAP binary access.",
+    features: ["REST ~5ms", "FIX 4.4 ~500us", "ZAP binary ~100us"],
+    href: `${DOCS}/exchange-api`,
   },
   {
     icon: DeFiIcon,
-    title: "DeFi Protocols",
-    description: "Build AMMs, lending protocols, and yield products. Institutional-grade DeFi with compliance.",
-    features: ["AMM & liquidity pools", "Lending protocols", "Yield optimization"],
-  },
-  {
-    icon: LayersIcon,
-    title: "Digital Asset Businesses",
-    description: "Issue stablecoins, security tokens, or tokenized assets. Full lifecycle infrastructure.",
-    features: ["Stablecoin issuance", "Security token infrastructure", "Multi-chain deployment"],
-  },
-  {
-    icon: StoreIcon,
-    title: "Marketplaces & Platforms",
-    description: "Enable crypto and fiat payouts globally. Multi-currency wallets with instant settlements.",
-    features: ["Multi-currency wallets", "200+ country payouts", "Real-time settlements"],
+    title: "DEX & AMM",
+    description: "Non-custodial trading with on-chain settlement. Programmable AMM pools on any EVM chain.",
+    features: ["Lux + Ethereum + L2s", "Concentrated liquidity", "Atomic settlement"],
+    href: `${DOCS}/dex`,
   },
   {
     icon: ShoppingCartIcon,
-    title: "E-commerce & Payments",
-    description: "Accept crypto and fiat globally, pay suppliers anywhere. FX and treasury management.",
-    features: ["Crypto & fiat checkout", "Cross-border payments", "FX optimization"],
+    title: "Smart Order Routing",
+    description: "TWAP, VWAP, POV, iceberg, and best-ex across venues with transaction cost analysis.",
+    features: ["Algorithmic execution", "Cross-venue SOR", "TCA reporting"],
+    href: `${DOCS}/execution`,
+  },
+  {
+    icon: LayersIcon,
+    title: "Multi-Asset Trading",
+    description: "Stocks, fixed income, commodities, forex, privates, pre-IPO, and crypto in one ATS.",
+    features: ["10,000+ US equities", "200+ crypto assets", "50+ FX pairs"],
+    href: `${DOCS}/trading`,
+  },
+  {
+    icon: StoreIcon,
+    title: "HFT / Co-Location",
+    description: "Institutional low-latency access at Equinix NY5. Dedicated cross-connects and VLANs.",
+    features: ["10Gbps cross-connect", "Dedicated racks", "FIX + ZAP"],
+    href: `${DOCS}/hft`,
+  },
+  {
+    icon: BankIcon,
+    title: "White-Label Stack",
+    description: "Launch your exchange, DEX, or brokerage with your brand. Our engine, your UX and pricing.",
+    features: ["Custom branding", "Your fee schedule", "Your jurisdiction"],
+    href: `${DOCS}/broker-dealers`,
   },
 ];
 
 const capabilities = [
-  { title: "CEX & DEX Platform", description: "White-label exchange with institutional liquidity. Matching engine, order books, DEX aggregation." },
-  { title: "DeFi Infrastructure", description: "AMMs, lending protocols, yield vaults, and staking. Institutional compliance built in." },
-  { title: "Multi-Asset Wallets", description: "Custodial and MPC self-custody. 50+ chains, HSM-backed, fiat and crypto support." },
-  { title: "Global Payments", description: "200+ countries, 180+ currencies, 50+ payment rails. Real-time settlement." },
-  { title: "Digital Securities", description: "Issue stablecoins, security tokens, and tokenized assets. Multi-chain deployment." },
-  { title: "Compliance & Security", description: "KYC/KYB, AML screening, HSM/MPC key management, and post-quantum ready." },
+  { title: "CEX & DEX Platform", description: "White-label exchange with institutional liquidity. Matching engine, order books, DEX aggregation.", href: `${DOCS}/exchange-api` },
+  { title: "HFT Infrastructure", description: "Sub-100us ZAP binary, FIX 4.4, and co-location at Equinix NY5. Built for market makers and BDs.", href: `${DOCS}/hft` },
+  { title: "Smart Execution", description: "TWAP, VWAP, POV, iceberg, and algorithmic order types. Best-execution across venues.", href: `${DOCS}/execution` },
+  { title: "Agentic Trading", description: "MCP-native endpoints. AI agents connect, authenticate, and trade under the same compliance pipeline.", href: `${DOCS}/agentic-trading` },
+  { title: "Real-Time Data", description: "WebSocket streams for quotes, trades, L2 order-book depth, and order status at institutional latency.", href: `${DOCS}/websocket` },
+  { title: "Post-Quantum Security", description: "ML-DSA order signing, ML-KEM key exchange, and FHE-encrypted matching. Quantum-safe at every layer.", href: `${DOCS}/quantum` },
 ];
 
 export default function OnlinePlatform() {
@@ -110,51 +118,53 @@ export default function OnlinePlatform() {
       {/* Hero */}
       <HeroSection>
         <HeroContent>
-          <HeroBadge>Solutions</HeroBadge>
+          <HeroBadge>Online Platform</HeroBadge>
           <HeroTitle>
-            Complete infrastructure for every use case
+            One platform. Every asset class.
           </HeroTitle>
           <HeroSubtitle>
-            Whether you&apos;re launching an exchange, building DeFi protocols, issuing digital assets,
-            or powering global payments—we have the complete infrastructure stack.
+            CEX, DEX, and AMM under one API. Stocks, fixed income, commodities, forex,
+            privates, pre-IPO, and crypto — all cleared through our ATS. Trade from a
+            browser, a FIX session, or an AI agent.
           </HeroSubtitle>
           <HeroButtons>
             <Link href="https://app.lux.financial/registration" target="_blank">
               <CustomButton>Get Started</CustomButton>
             </Link>
-            <Link href="https://cal.com/luxfi" target="_blank">
-              <SecondaryButton>Talk to Sales</SecondaryButton>
+            <Link href="https://docs.lux.financial" target="_blank" rel="noopener noreferrer">
+              <SecondaryButton>View Docs</SecondaryButton>
             </Link>
           </HeroButtons>
         </HeroContent>
       </HeroSection>
 
-      {/* Industries */}
+      {/* Trading Capabilities */}
       <Section>
         <SectionHeader>
-          <SectionTitle>Built for your industry</SectionTitle>
+          <SectionTitle>Trading, execution, and connectivity</SectionTitle>
           <SectionSubtitle>
-            Specialized solutions for different business models
+            Every venue type, every protocol, every asset class — one platform.
           </SectionSubtitle>
         </SectionHeader>
 
         <IndustriesGrid>
-          {industries.map((industry, index) => (
-            <IndustryCard key={index}>
+          {tradingCapabilities.map((cap) => (
+            <IndustryLink key={cap.title} href={cap.href} target="_blank" rel="noopener noreferrer">
               <IndustryIcon>
-                <industry.icon />
+                <cap.icon />
               </IndustryIcon>
-              <IndustryTitle>{industry.title}</IndustryTitle>
-              <IndustryDescription>{industry.description}</IndustryDescription>
+              <IndustryTitle>{cap.title}</IndustryTitle>
+              <IndustryDescription>{cap.description}</IndustryDescription>
               <FeatureList>
-                {industry.features.map((feature, i) => (
+                {cap.features.map((feature, i) => (
                   <FeatureItem key={i}>
                     <FeatureCheck><CheckIcon /></FeatureCheck>
                     <span>{feature}</span>
                   </FeatureItem>
                 ))}
               </FeatureList>
-            </IndustryCard>
+              <LearnMore>Read docs →</LearnMore>
+            </IndustryLink>
           ))}
         </IndustriesGrid>
       </Section>
@@ -169,11 +179,12 @@ export default function OnlinePlatform() {
         </SectionHeader>
 
         <CapabilitiesGrid>
-          {capabilities.map((cap, index) => (
-            <CapabilityCard key={index}>
+          {capabilities.map((cap) => (
+            <CapabilityLink key={cap.title} href={cap.href} target="_blank" rel="noopener noreferrer">
               <CapabilityTitle>{cap.title}</CapabilityTitle>
               <CapabilityDescription>{cap.description}</CapabilityDescription>
-            </CapabilityCard>
+              <LearnMore>Read docs →</LearnMore>
+            </CapabilityLink>
           ))}
         </CapabilitiesGrid>
       </Section>
@@ -352,6 +363,44 @@ const IndustryCard = styled.div`
 
   &:hover {
     border-color: rgba(255, 255, 255, 0.15);
+  }
+`;
+
+const IndustryLink = styled.a`
+  display: block;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 2rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+  }
+`;
+
+const LearnMore = styled.span`
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.92);
+`;
+
+const CapabilityLink = styled.a`
+  display: block;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
   }
 `;
 

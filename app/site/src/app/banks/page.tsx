@@ -4,36 +4,44 @@ import styled from "styled-components";
 import Link from "next/link";
 import { CustomButton, SecondaryButton } from "@/components/Button";
 
+const DOCS = "https://docs.lux.financial/docs";
+
 const bankFeatures = [
   {
-    title: "Core Banking Integration",
-    description: "REST APIs that integrate with your existing core banking system. Support for ISO 20022, SWIFT MT, and legacy formats.",
+    title: "Broker-Dealer Integration",
+    description: "Omnibus, fully-disclosed, and institutional account structures. REST, FIX 4.4, and ZAP binary connectivity for registered BDs.",
     icon: BankIcon,
-  },
-  {
-    title: "Ledger & Accounting",
-    description: "Double-entry ledger with real-time reconciliation. Full audit trail and regulatory reporting built-in.",
-    icon: LedgerIcon,
+    href: `${DOCS}/broker-dealers`,
   },
   {
     title: "Multi-Rail Payments",
-    description: "Single API for ACH, Wire, SEPA, Faster Payments, SWIFT, and 20+ local payment rails.",
+    description: "Single API for ACH, Wire, SEPA, Faster Payments, SWIFT, PIX, SPEI, UPI, and 20+ local rails. Real-time settlement where supported.",
     icon: PaymentIcon,
+    href: `${DOCS}/trading`,
   },
   {
     title: "Digital Asset Custody",
-    description: "Institutional-grade MPC custody for digital assets. Support for stablecoins and tokenized deposits.",
+    description: "MPC threshold custody, HSM key storage, insurance, and audit trail. Supports stablecoins, tokenized deposits, and security tokens.",
     icon: VaultIcon,
+    href: `${DOCS}/blockchain`,
   },
   {
     title: "Compliance Engine",
-    description: "Real-time transaction monitoring, sanctions screening, and automated SAR filing.",
+    description: "Real-time sanctions screening (OFAC/EU/UK/UN), KYC/KYB, travel rule (FATF), SAR/CTR automation, and multi-jurisdiction rules.",
     icon: ShieldIcon,
+    href: `${DOCS}/compliance-full`,
   },
   {
-    title: "White-Label Solutions",
-    description: "Launch branded digital banking products. Mobile apps, cards, and payment experiences.",
+    title: "Exchange / CEX Access",
+    description: "ATS/CEX connectivity for banks offering trading. Deposit/withdrawal pipelines, reporting feeds, and drop-copy sessions.",
+    icon: LedgerIcon,
+    href: `${DOCS}/exchange-api`,
+  },
+  {
+    title: "White-Label Programs",
+    description: "Launch branded banking, trading, and card products under your regulatory umbrella. Your brand, your pricing, our engine.",
     icon: BrandIcon,
+    href: `${DOCS}/broker-dealers`,
   },
 ];
 
@@ -198,13 +206,14 @@ export default function BanksPage() {
           {bankFeatures.map((feature) => {
             const Icon = feature.icon;
             return (
-              <FeatureCard key={feature.title}>
+              <FeatureAnchor key={feature.title} href={feature.href} target="_blank" rel="noopener noreferrer">
                 <FeatureIcon>
                   <Icon />
                 </FeatureIcon>
                 <FeatureTitle>{feature.title}</FeatureTitle>
                 <FeatureDescription>{feature.description}</FeatureDescription>
-              </FeatureCard>
+                <FeatureLearnMore>Read docs →</FeatureLearnMore>
+              </FeatureAnchor>
             );
           })}
         </FeaturesGrid>
@@ -491,6 +500,29 @@ const FeatureCard = styled.div`
     border-color: rgba(139, 92, 246, 0.3);
     transform: translateY(-2px);
   }
+`;
+
+const FeatureAnchor = styled.a`
+  display: block;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 2rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: rgba(139, 92, 246, 0.3);
+    transform: translateY(-2px);
+  }
+`;
+
+const FeatureLearnMore = styled.span`
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #22D3EE;
 `;
 
 const FeatureIcon = styled.div`

@@ -97,10 +97,12 @@ export default function Contact() {
       {/* Hero */}
       <HeroSection>
         <HeroContent>
-          <HeroBadge>Contact</HeroBadge>
-          <HeroTitle>Let&apos;s build together</HeroTitle>
+          <HeroBadge>Contact Sales</HeroBadge>
+          <HeroTitle>Talk to an expert.</HeroTitle>
           <HeroSubtitle>
-            Whether you&apos;re ready to integrate or just exploring options, our team is here to help.
+            Volume pricing, white-label deployments, regulatory coverage, and custom
+            SLAs. Tell us about your project and we&apos;ll respond within 24 hours.
+            Developer questions? Try the <Link href="/help">Help Center</Link>.
           </HeroSubtitle>
         </HeroContent>
       </HeroSection>

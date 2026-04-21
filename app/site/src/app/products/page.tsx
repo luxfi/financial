@@ -24,24 +24,79 @@ import {
 } from "./styles";
 
 // Icons
-const PaymentsIcon = () => (
+const ExchangeIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+    <path d="M16 3l4 4-4 4M20 7H4M8 21l-4-4 4-4M4 17h16" />
   </svg>
 );
 
-const WalletIcon = () => (
+const DeFiIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4" />
-    <path d="M3 5v14a2 2 0 0 0 2 2h16v-5" />
-    <path d="M18 12a2 2 0 0 0 0 4h4v-4h-4z" />
+    <circle cx="12" cy="12" r="10" />
+    <path d="M8 12h8M12 8v8" />
   </svg>
 );
 
-const SmartphoneIcon = () => (
+const AmmIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
-    <line x1="12" y1="18" x2="12.01" y2="18" />
+    <path d="M3 18c3-6 6-6 9 0s6 6 9 0" />
+  </svg>
+);
+
+const VaultIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <rect x="3" y="3" width="18" height="18" rx="2" />
+    <circle cx="12" cy="12" r="4" />
+    <path d="M12 8v8M8 12h8" />
+  </svg>
+);
+
+const CardIconSvg = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <rect x="2" y="5" width="20" height="14" rx="2" />
+    <line x1="2" y1="10" x2="22" y2="10" />
+  </svg>
+);
+
+const BankIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3" />
+  </svg>
+);
+
+const HftIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+  </svg>
+);
+
+const LayersIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <polygon points="12 2 2 7 12 12 22 7 12 2" />
+    <polyline points="2 17 12 22 22 17" />
+    <polyline points="2 12 12 17 22 12" />
+  </svg>
+);
+
+const GpuIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <rect x="4" y="4" width="16" height="16" rx="2" />
+    <rect x="9" y="9" width="6" height="6" />
+    <path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3" />
+  </svg>
+);
+
+const ShieldIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+  </svg>
+);
+
+const AgentIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <rect x="3" y="11" width="18" height="10" rx="2" />
+    <circle cx="12" cy="5" r="2" />
+    <path d="M12 7v4M8 16h.01M16 16h.01" />
   </svg>
 );
 
@@ -52,105 +107,177 @@ const GlobeIcon = () => (
   </svg>
 );
 
-const ServerIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
-    <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />
-    <line x1="6" y1="6" x2="6.01" y2="6" />
-    <line x1="6" y1="18" x2="6.01" y2="18" />
-  </svg>
-);
+const DOCS = "https://docs.lux.financial/docs";
 
-const ShieldIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-  </svg>
-);
-
-const CpuIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <rect x="4" y="4" width="16" height="16" rx="2" />
-    <rect x="9" y="9" width="6" height="6" />
-    <path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3" />
-  </svg>
-);
-
-// Exchange Icon
-const ExchangeIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <path d="M16 3l4 4-4 4M20 7H4M8 21l-4-4 4-4M4 17h16" />
-  </svg>
-);
-
-// DeFi Icon
-const DeFiIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <circle cx="12" cy="12" r="10" />
-    <path d="M8 12h8M12 8v8" />
-  </svg>
-);
-
-// Securities Icon
-const SecuritiesIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-    <polyline points="14 2 14 8 20 8" />
-    <line x1="16" y1="13" x2="8" y2="13" />
-    <line x1="16" y1="17" x2="8" y2="17" />
-  </svg>
-);
-
-const products = [
-  {
-    icon: SmartphoneIcon,
-    title: "Mobile Banking App",
-    description: "White-label mobile app for iOS and Android. Fiat, crypto, stablecoins—beautiful UI with bank-grade security.",
-    href: "/products/mobile",
-    color: "#22C55E",
-  },
+// Core trading & venue products
+const tradingProducts = [
   {
     icon: ExchangeIcon,
-    title: "CEX & DEX Platform",
-    description: "White-label exchange infrastructure. Launch your own CEX with institutional liquidity or integrate DEX aggregation.",
-    href: "/products/exchange",
+    title: "CEX (Centralized Exchange)",
+    description:
+      "Alternative Trading System with CLOB matching, REST + WebSocket + FIX 4.4. White-label exchange with your brand, your pricing, our engine.",
+    href: `${DOCS}/exchange-api`,
     color: "#8B5CF6",
   },
   {
     icon: DeFiIcon,
-    title: "DeFi & AMM",
-    description: "Deploy AMMs, liquidity pools, and yield products. Full DeFi stack with institutional-grade compliance.",
-    href: "/products/defi",
+    title: "DEX (Decentralized Exchange)",
+    description:
+      "Non-custodial on-chain trading across EVM chains. Settlement on Lux, Ethereum, and interoperable L2s. Self-custody by default.",
+    href: `${DOCS}/dex`,
     color: "#3B82F6",
   },
   {
-    icon: SecuritiesIcon,
-    title: "Digital Securities",
-    description: "Issue, trade, and settle tokenized securities. Compliant infrastructure for STOs, bonds, and equity tokens.",
-    href: "/products/issuance",
-    color: "#FFFFFF",
-  },
-  {
-    icon: GlobeIcon,
-    title: "Global Payments",
-    description: "Fiat and crypto payments to 200+ countries. All currencies with real-time settlement and local rails.",
-    href: "/products/cross-border",
-    color: "#22D3EE",
-  },
-  {
-    icon: WalletIcon,
-    title: "Multi-Asset Wallets",
-    description: "Custodial and MPC wallets for fiat, crypto, stablecoins, and securities. 50+ chains supported.",
-    href: "/products/wallets",
+    icon: AmmIcon,
+    title: "AMM (Automated Market Maker)",
+    description:
+      "Programmable liquidity pools with concentrated liquidity, dynamic fees, and LP incentives. Deploy white-label pools on any supported chain.",
+    href: `${DOCS}/dex`,
     color: "#EC4899",
   },
   {
-    icon: ServerIcon,
-    title: "Infrastructure",
-    description: "KMS, MPC, IAM, HSM, and post-quantum security. Enterprise-grade foundation for any financial product.",
-    href: "/products/infrastructure",
-    color: "#666666",
+    icon: HftIcon,
+    title: "HFT Infrastructure",
+    description:
+      "Sub-millisecond latency. REST ~5ms, WebSocket ~1ms, FIX 4.4 ~500us, ZAP binary ~100us. Co-location at Equinix NY5 available.",
+    href: `${DOCS}/hft`,
+    color: "#F59E0B",
   },
 ];
+
+// Order, execution & data products
+const executionProducts = [
+  {
+    icon: LayersIcon,
+    title: "Order Management",
+    description:
+      "Market, limit (GTC/IOC/FOK/DAY), stop, stop-limit, bracket orders. Full lifecycle: new, modify, cancel, fill, execution report.",
+    href: `${DOCS}/orders`,
+    color: "#22D3EE",
+  },
+  {
+    icon: HftIcon,
+    title: "Smart Order Routing",
+    description:
+      "TWAP, VWAP, POV, iceberg, and custom algorithmic execution. Best-execution routing across venues with transaction cost analysis.",
+    href: `${DOCS}/execution`,
+    color: "#22C55E",
+  },
+  {
+    icon: GpuIcon,
+    title: "GPU Execution Engine",
+    description:
+      "GPU-accelerated matching and risk checks. Parallel order-book simulation and portfolio analytics at institutional scale.",
+    href: `${DOCS}/gpu`,
+    color: "#FF6B6B",
+  },
+  {
+    icon: AgentIcon,
+    title: "Agentic Trading (MCP)",
+    description:
+      "Every trading endpoint exposed over Model Context Protocol. AI agents authenticate via scoped JWTs with the same compliance pipeline as humans.",
+    href: `${DOCS}/agentic-trading`,
+    color: "#A855F7",
+  },
+];
+
+// Custody, banking & asset products
+const bankingProducts = [
+  {
+    icon: VaultIcon,
+    title: "Treasury & Custody",
+    description:
+      "MPC custody with 2-of-3 / 3-of-5 threshold signing, HSM-backed (FIPS 140-2 Level 3). Multi-sig vaults, policy engine, insurance.",
+    href: `${DOCS}/blockchain`,
+    color: "#0EA5E9",
+  },
+  {
+    icon: BankIcon,
+    title: "Banking Accounts",
+    description:
+      "Checking, savings, and treasury accounts. Virtual IBANs, ACH, Wire, SEPA, Faster Payments, SWIFT. FDIC-sweep partners on USD.",
+    href: `${DOCS}/broker-dealers`,
+    color: "#10B981",
+  },
+  {
+    icon: CardIconSvg,
+    title: "Cards (Standard / Premium / Black)",
+    description:
+      "Virtual + physical card issuance. Tiered programs, spend controls, real-time authorization, FX at interbank, rewards.",
+    href: `${DOCS}/broker-dealers`,
+    color: "#F97316",
+  },
+  {
+    icon: GlobeIcon,
+    title: "Multi-Asset Platform",
+    description:
+      "Fiat (USD, EUR, GBP, JPY), crypto (BTC, ETH, SOL, LUX + 200 more), stablecoins (USDC, USDT, PYUSD), and digital securities in one ledger.",
+    href: `${DOCS}/trading`,
+    color: "#EAB308",
+  },
+];
+
+// Infrastructure & security products
+const infraProducts = [
+  {
+    icon: ShieldIcon,
+    title: "Post-Quantum Security",
+    description:
+      "NIST FIPS 204 (ML-DSA), FIPS 203 (ML-KEM), FIPS 205 (SLH-DSA) implemented as EVM precompiles. Quantum-safe at every layer.",
+    href: `${DOCS}/quantum`,
+    color: "#6366F1",
+  },
+  {
+    icon: ShieldIcon,
+    title: "FHE Coprocessor",
+    description:
+      "CKKS fully-homomorphic encryption for confidential order matching and encrypted portfolio analytics. GPU-accelerated.",
+    href: `${DOCS}/fhe`,
+    color: "#8B5CF6",
+  },
+  {
+    icon: LayersIcon,
+    title: "Blockchain Settlement",
+    description:
+      "Native multi-chain settlement: Lux Z-Chain, A-Chain, Ethereum, and EVM-compatible L1/L2s. Atomic cross-chain via Teleport.",
+    href: `${DOCS}/blockchain`,
+    color: "#14B8A6",
+  },
+  {
+    icon: HftIcon,
+    title: "ZAP Wire Protocol",
+    description:
+      "Zero-allocation binary protocol with sub-100us matching latency. Fixed-frame messaging, mmapped order submission, multicast market data.",
+    href: `${DOCS}/zap`,
+    color: "#EF4444",
+  },
+];
+
+type Product = (typeof tradingProducts)[number];
+
+function ProductGrid({ products }: { products: Product[] }) {
+  return (
+    <CardGrid $cols={4}>
+      {products.map((p) => (
+        <Link
+          key={p.href + p.title}
+          href={p.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ textDecoration: "none" }}
+        >
+          <Card $accent={p.color}>
+            <CardIcon $color={p.color}>
+              <p.icon />
+            </CardIcon>
+            <CardTitle>{p.title}</CardTitle>
+            <CardDescription>{p.description}</CardDescription>
+          </Card>
+        </Link>
+      ))}
+    </CardGrid>
+  );
+}
 
 export default function Products() {
   return (
@@ -158,19 +285,18 @@ export default function Products() {
       <HeroSection>
         <HeroContent>
           <ProductBadge>Products</ProductBadge>
-          <HeroTitle>
-            Complete financial infrastructure
-          </HeroTitle>
+          <HeroTitle>The full financial stack.</HeroTitle>
           <HeroSubtitle>
-            Banking, trading, DeFi, and digital assets. CEX, DEX, AMM, wallets, payments.
-            Everything to build any financial product, in 200+ countries.
+            Exchange, DEX, AMM, treasury, cards, banking, HFT, and multi-asset
+            infrastructure — every layer available standalone or fully white-labeled.
+            Regulated. Post-quantum secure. Production-ready today.
           </HeroSubtitle>
           <HeroButtons>
             <Link href="/contact">
               <CustomButton>Talk to Sales</CustomButton>
             </Link>
-            <Link href="https://docs.lux.financial" target="_blank">
-              <SecondaryButton>View API Docs</SecondaryButton>
+            <Link href="https://docs.lux.financial" target="_blank" rel="noopener noreferrer">
+              <SecondaryButton>View Docs</SecondaryButton>
             </Link>
           </HeroButtons>
         </HeroContent>
@@ -178,35 +304,58 @@ export default function Products() {
 
       <Section>
         <SectionHeader>
-          <SectionTitle>Our Platform</SectionTitle>
+          <SectionTitle>Trading Venues</SectionTitle>
           <SectionSubtitle>
-            Unified infrastructure for banks, exchanges, and DeFi
+            CEX, DEX, AMM, and HFT infrastructure. Every venue type, one API.
           </SectionSubtitle>
         </SectionHeader>
+        <ProductGrid products={tradingProducts} />
+      </Section>
 
-        <CardGrid $cols={3}>
-          {products.map((product, index) => (
-            <Link key={index} href={product.href} style={{ textDecoration: 'none' }}>
-              <Card $accent={product.color}>
-                <CardIcon $color={product.color}>
-                  <product.icon />
-                </CardIcon>
-                <CardTitle>{product.title}</CardTitle>
-                <CardDescription>{product.description}</CardDescription>
-              </Card>
-            </Link>
-          ))}
-        </CardGrid>
+      <Section>
+        <SectionHeader>
+          <SectionTitle>Execution & Data</SectionTitle>
+          <SectionSubtitle>
+            Smart order routing, algos, GPU matching, and agentic access.
+          </SectionSubtitle>
+        </SectionHeader>
+        <ProductGrid products={executionProducts} />
+      </Section>
+
+      <Section>
+        <SectionHeader>
+          <SectionTitle>Custody, Banking & Cards</SectionTitle>
+          <SectionSubtitle>
+            Treasury, accounts, cards, and multi-asset wallets. Your users, your brand.
+          </SectionSubtitle>
+        </SectionHeader>
+        <ProductGrid products={bankingProducts} />
+      </Section>
+
+      <Section>
+        <SectionHeader>
+          <SectionTitle>Infrastructure & Security</SectionTitle>
+          <SectionSubtitle>
+            Post-quantum, FHE, multi-chain settlement, and the ZAP wire protocol.
+          </SectionSubtitle>
+        </SectionHeader>
+        <ProductGrid products={infraProducts} />
       </Section>
 
       <CTASection>
-        <CTATitle>Ready to get started?</CTATitle>
+        <CTATitle>Ready to build?</CTATitle>
         <CTASubtitle>
-          Talk to our team about building with Lux Financial.
+          Pick what you need, leave what you don&apos;t. Every product is production-ready
+          and documented end-to-end.
         </CTASubtitle>
-        <Link href="/contact">
-          <CustomButton>Talk to Sales</CustomButton>
-        </Link>
+        <HeroButtons>
+          <Link href="/contact">
+            <CustomButton>Talk to Sales</CustomButton>
+          </Link>
+          <Link href="https://docs.lux.financial" target="_blank" rel="noopener noreferrer">
+            <SecondaryButton>Read the Docs</SecondaryButton>
+          </Link>
+        </HeroButtons>
       </CTASection>
     </PageContainer>
   );

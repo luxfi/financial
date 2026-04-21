@@ -1,39 +1,48 @@
 "use client";
 
+import Link from "next/link";
 import styled from "styled-components";
 import AnimatedDiv from "@/components/AnimatedDiv";
 import BannerWithCard from "@/components/BannerWithCard";
+
+const DOCS = "https://docs.lux.financial/docs";
 
 const securityFeatures = [
   {
     icon: "🔐",
     title: "HSM-Backed Key Management",
-    description: "All private keys are generated and stored in FIPS 140-2 Level 3 certified Hardware Security Modules (HSMs) using AWS CloudHSM, Azure Dedicated HSM, or Thales Luna.",
+    description: "All private keys generated and stored in FIPS 140-2 Level 3 HSMs (AWS CloudHSM, Azure Dedicated HSM, Thales Luna). Never leaves the module in plaintext.",
+    href: `${DOCS}/blockchain`,
   },
   {
     icon: "🛡️",
-    title: "Multi-Party Computation (MPC)",
-    description: "Threshold signing with 2-of-3 or 3-of-5 configurations ensures no single party can unilaterally move funds. Key shares are distributed across geographic regions.",
+    title: "MPC Threshold Custody",
+    description: "2-of-3 and 3-of-5 threshold signing. Key shares distributed across geographic regions and organizational boundaries — no single party can move funds.",
+    href: `${DOCS}/blockchain`,
   },
   {
     icon: "⚛️",
     title: "Post-Quantum Cryptography",
-    description: "Future-proofed against quantum threats with CRYSTALS-Dilithium, Kyber, and SPHINCS+ algorithms. Hybrid classical/quantum signatures available.",
+    description: "NIST FIPS 204 (ML-DSA / Dilithium), FIPS 203 (ML-KEM / Kyber), FIPS 205 (SLH-DSA / SPHINCS+). End-to-end quantum-safe — consensus, signing, key exchange, MPC.",
+    href: `${DOCS}/quantum`,
+  },
+  {
+    icon: "🔏",
+    title: "Fully Homomorphic Encryption",
+    description: "CKKS-based FHE coprocessor on the Z/A-Chain VM. Orders matched, portfolios analyzed, and compliance checks run on encrypted data — values never decrypted.",
+    href: `${DOCS}/fhe`,
   },
   {
     icon: "🔒",
-    title: "Enterprise Identity & Access",
-    description: "SAML 2.0, OIDC, and OAuth 2.0 integration with your existing IdP. Role-based access control, audit logging, and session management.",
-  },
-  {
-    icon: "🌐",
-    title: "Network Security",
-    description: "All traffic encrypted with TLS 1.3. WAF protection, DDoS mitigation, and IP allowlisting. Private endpoints available for enterprise deployments.",
+    title: "Enterprise Identity",
+    description: "OIDC via Hanzo IAM (hanzo.id). SAML 2.0 and OAuth 2.0 for your IdP. Role-based access, fine-grained scopes, and full audit log.",
+    href: `${DOCS}/api-reference-full`,
   },
   {
     icon: "📋",
     title: "Compliance & Audits",
-    description: "SOC 2 Type II certified. Regular penetration testing by independent security firms. Full audit trail of all transactions and administrative actions.",
+    description: "SOC 2 Type II, penetration-tested by independent firms, full audit trail on every transaction. KYC/AML, sanctions, SAR/CTR built into the pipeline.",
+    href: `${DOCS}/compliance-full`,
   },
 ];
 
@@ -71,11 +80,12 @@ export default function SecurityPage() {
           <SectionTitle>Security Architecture</SectionTitle>
           <FeaturesGrid>
             {securityFeatures.map((feature) => (
-              <FeatureCard key={feature.title}>
+              <FeatureLink key={feature.title} href={feature.href} target="_blank" rel="noopener noreferrer">
                 <FeatureIcon>{feature.icon}</FeatureIcon>
                 <FeatureTitle>{feature.title}</FeatureTitle>
                 <FeatureDescription>{feature.description}</FeatureDescription>
-              </FeatureCard>
+                <FeatureArrow>Read docs →</FeatureArrow>
+              </FeatureLink>
             ))}
           </FeaturesGrid>
         </Section>
@@ -220,6 +230,29 @@ const FeatureCard = styled.div`
   &:hover {
     border-color: #333;
   }
+`;
+
+const FeatureLink = styled(Link)`
+  display: block;
+  background: #0a0a0a;
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 24px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: #333;
+    transform: translateY(-2px);
+  }
+`;
+
+const FeatureArrow = styled.span`
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #FFFFFF;
 `;
 
 const FeatureIcon = styled.div`

@@ -1,6 +1,7 @@
 # Build stage
 FROM node:20-alpine AS build
 WORKDIR /src
+ENV CI=true
 RUN npm install -g pnpm@10
 COPY . .
 RUN pnpm install --frozen-lockfile
