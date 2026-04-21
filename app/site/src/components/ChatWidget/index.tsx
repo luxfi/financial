@@ -97,71 +97,75 @@ export default function ChatWidget() {
     setInput("");
     setIsLoading(true);
 
+    // RAG-backed chat against hanzo/cloud /v1/chat-docs (indexed lux docs).
+    // Auth uses a publishable key (pk-*) — origin-restricted server-side.
+    const publishableKey = process.env.NEXT_PUBLIC_LUX_PK ?? ''
+    const endpoint = process.env.NEXT_PUBLIC_LUX_CHAT_URL ?? 'https://api.hanzo.ai/v1/chat-docs'
+    const assistantId = (Date.now() + 1).toString()
+    setMessages((prev) => [
+      ...prev,
+      { id: assistantId, role: "assistant", content: "", timestamp: new Date() },
+    ]);
+
     try {
-      const response = await fetch("https://api.hanzo.ai/v1/chat/completions", {
+      const response = await fetch(endpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer hz_widget_public",
+          ...(publishableKey ? { Authorization: `Bearer ${publishableKey}` } : {}),
         },
         body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
           messages: [
-            {
-              role: "system",
-              content: `You are Lux AI, an assistant for Lux Financial (lux.financial). You help users understand stablecoin infrastructure, payment APIs, and financial services.
-
-Key Information:
-- Lux Financial is a technology services provider offering open-source enterprise crypto infrastructure for regulated financial institutions (github.com/luxfi)
-- Products: Orchestration API, Multi-chain Wallets, Cross-border Payments, Stablecoin Issuance
-- Supported stablecoins: USDC, USDT, PYUSD, EURC, USDY
-- Supported chains: Ethereum, Polygon, Arbitrum, Optimism, Base, Solana, Stellar, Tron
-- Payment rails: ACH, Wire, SEPA, SWIFT, PIX, SPEI, Faster Payments
-- API docs at docs.lux.financial
-- MPC custody and post-quantum security features
-
-Current page context: ${pageContext}
-
-Be helpful, concise, and professional. For technical questions, provide accurate information. For pricing or sales, direct users to /contact.`,
-            },
+            { role: "system", content: `Current page: ${pageContext}` },
             ...messages.slice(-10).map((m) => ({ role: m.role, content: m.content })),
             { role: "user", content: messageText.trim() },
           ],
-          max_tokens: 500,
-          temperature: 0.7,
         }),
       });
 
-      if (response.ok) {
-        const data = await response.json();
-        const assistantMessage: Message = {
-          id: (Date.now() + 1).toString(),
-          role: "assistant",
-          content: data.choices[0].message.content,
-          timestamp: new Date(),
-        };
-        setMessages((prev) => [...prev, assistantMessage]);
-      } else {
-        setMessages((prev) => [
-          ...prev,
-          {
-            id: (Date.now() + 1).toString(),
-            role: "assistant",
-            content: "I'm having trouble connecting. Please visit our docs at docs.lux.financial or contact us at /contact.",
-            timestamp: new Date(),
-          },
-        ]);
+      if (!response.ok || !response.body) {
+        const errText = await response.text().catch(() => response.statusText);
+        throw new Error(errText || `HTTP ${response.status}`);
+      }
+
+      // AI SDK v4 data-stream protocol: newline-delimited `0:"token"` lines.
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let buf = "";
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        buf += decoder.decode(value, { stream: true });
+        const lines = buf.split("\n");
+        buf = lines.pop() ?? "";
+        for (const line of lines) {
+          const trimmed = line.trim();
+          if (!trimmed) continue;
+          const colon = trimmed.indexOf(":");
+          if (colon < 0) continue;
+          const tag = trimmed.slice(0, colon);
+          if (tag !== "0") continue;
+          try {
+            const token = JSON.parse(trimmed.slice(colon + 1)) as string;
+            setMessages((prev) =>
+              prev.map((m) => (m.id === assistantId ? { ...m, content: m.content + token } : m)),
+            );
+          } catch {
+            // skip malformed
+          }
+        }
       }
     } catch (error) {
-      setMessages((prev) => [
-        ...prev,
-        {
-          id: (Date.now() + 1).toString(),
-          role: "assistant",
-          content: "Connection issue. Please visit docs.lux.financial for documentation.",
-          timestamp: new Date(),
-        },
-      ]);
+      setMessages((prev) =>
+        prev.map((m) =>
+          m.id === assistantId && !m.content
+            ? {
+                ...m,
+                content: "Connection issue. Browse docs.lux.financial or blog.lux.network while I reconnect.",
+              }
+            : m,
+        ),
+      );
     } finally {
       setIsLoading(false);
     }
