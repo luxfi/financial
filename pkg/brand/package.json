@@ -1,0 +1,30 @@
+{
+  "name": "@luxbank/brand",
+  "version": "1.0.2",
+  "description": "Centralized brand and jurisdiction configuration for Lux Financial",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
+    "./jurisdictions": { "types": "./dist/jurisdictions/index.d.ts", "default": "./dist/jurisdictions/index.js" },
+    "./assets": { "types": "./dist/assets/index.d.ts", "default": "./dist/assets/index.js" }
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@luxfi/logo": "^1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  }
+}
