@@ -154,11 +154,79 @@ interface CommandPaletteProps {
   onClose: () => void;
 }
 
+// Pagefind is loaded at runtime from /pagefind/pagefind.js (emitted at build time by `pagefind --site out`).
+// We load it lazily on first search so it doesn't bloat the initial bundle.
+type PagefindSubResult = { url: string; excerpt: string };
+type PagefindResult = {
+  id: string;
+  data: () => Promise<{
+    url: string;
+    meta: { title?: string };
+    excerpt: string;
+    sub_results?: PagefindSubResult[];
+  }>;
+};
+type Pagefind = {
+  search: (q: string) => Promise<{ results: PagefindResult[] }>;
+};
+declare global {
+  interface Window {
+    __lux_pagefind__?: Promise<Pagefind | null>;
+  }
+}
+async function loadPagefind(): Promise<Pagefind | null> {
+  if (typeof window === "undefined") return null;
+  if (!window.__lux_pagefind__) {
+    window.__lux_pagefind__ = (async () => {
+      try {
+        const mod = (await import(/* webpackIgnore: true */ "/pagefind/pagefind.js" as string)) as Pagefind;
+        return mod;
+      } catch {
+        return null;
+      }
+    })();
+  }
+  return window.__lux_pagefind__;
+}
+
 export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
   const [search, setSearch] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [pageResults, setPageResults] = useState<CommandItem[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
+
+  // Run pagefind when search changes
+  useEffect(() => {
+    let cancelled = false;
+    if (!search.trim()) {
+      setPageResults([]);
+      return;
+    }
+    const timer = setTimeout(async () => {
+      const pf = await loadPagefind();
+      if (!pf || cancelled) return;
+      const { results } = await pf.search(search);
+      const top = results.slice(0, 6);
+      const data = await Promise.all(top.map((r) => r.data()));
+      if (cancelled) return;
+      setPageResults(
+        data.map((d, i) => ({
+          id: `pagefind-${i}-${d.url}`,
+          title: d.meta?.title || d.url,
+          description: d.excerpt.replace(/<[^>]+>/g, "").slice(0, 160),
+          href: d.url.replace(/\.html$/, "").replace(/\/index$/, "/"),
+          icon: FileTextIcon,
+          category: "Pages",
+          keywords: [],
+        })),
+      );
+    }, 120);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [search]);
 
   // Filter commands based on search
   const filteredCommands = search
@@ -166,12 +234,15 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
         (cmd) =>
           cmd.title.toLowerCase().includes(search.toLowerCase()) ||
           cmd.description?.toLowerCase().includes(search.toLowerCase()) ||
-          cmd.keywords?.some((k) => k.toLowerCase().includes(search.toLowerCase()))
+          cmd.keywords?.some((k) => k.toLowerCase().includes(search.toLowerCase())),
       )
     : commands;
 
+  // Merge pagefind results (show under their own category)
+  const allItems = [...filteredCommands, ...pageResults];
+
   // Group by category
-  const groupedCommands = filteredCommands.reduce((acc, cmd) => {
+  const groupedCommands = allItems.reduce((acc, cmd) => {
     if (!acc[cmd.category]) acc[cmd.category] = [];
     acc[cmd.category].push(cmd);
     return acc;
