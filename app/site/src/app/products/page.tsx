@@ -107,6 +107,12 @@ const GlobeIcon = () => (
   </svg>
 );
 
+const ApiIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path d="m18 16 4-4-4-4M6 8l-4 4 4 4M14.5 4l-5 16" />
+  </svg>
+);
+
 const DOCS = "https://docs.lux.financial/docs";
 
 // Core trading & venue products
@@ -223,7 +229,7 @@ const infraProducts = [
     icon: ShieldIcon,
     title: "Post-Quantum Security",
     description:
-      "NIST FIPS 204 (ML-DSA), FIPS 203 (ML-KEM), FIPS 205 (SLH-DSA) implemented as EVM precompiles. Quantum-safe at every layer.",
+      "NIST FIPS 204 (ML-DSA), FIPS 203 (ML-KEM), FIPS 205 (SLH-DSA) plus Ringtail (N=768) 192-bit threshold signatures. Implemented as EVM precompiles.",
     href: `${DOCS}/quantum`,
     color: "#6366F1",
   },
@@ -231,7 +237,7 @@ const infraProducts = [
     icon: ShieldIcon,
     title: "FHE Coprocessor",
     description:
-      "CKKS fully-homomorphic encryption for confidential order matching and encrypted portfolio analytics. GPU-accelerated.",
+      "CKKS fully-homomorphic encryption (ring degree 14, 8 mult levels) for confidential order matching and encrypted portfolio analytics. GPU-accelerated.",
     href: `${DOCS}/fhe`,
     color: "#8B5CF6",
   },
@@ -244,14 +250,51 @@ const infraProducts = [
     color: "#14B8A6",
   },
   {
-    icon: HftIcon,
-    title: "ZAP Wire Protocol",
+    icon: ShieldIcon,
+    title: "ZAP (ZK Attestation Protocol)",
     description:
-      "Zero-allocation binary protocol with sub-100us matching latency. Fixed-frame messaging, mmapped order submission, multicast market data.",
+      "Zero-knowledge attestation on the Z/A-Chain. Groth16 proofs for confidential settlement, UTXO privacy, dark-pool operations, and regulatory attestation.",
     href: `${DOCS}/zap`,
     color: "#EF4444",
   },
 ];
+
+// Compliance, Data & Institutional access products
+const complianceProducts = [
+  {
+    icon: ShieldIcon,
+    title: "Compliance Suite",
+    description:
+      "KYC/KYB (Jumio, Onfido, Plaid), OFAC/EU/UK/PEP screening, FATF Travel Rule, SAR/CTR automation, and OATS/CAT/ATS-N/Form ATS filings.",
+    href: `${DOCS}/compliance-full`,
+    color: "#10B981",
+  },
+  {
+    icon: LayersIcon,
+    title: "Market Data",
+    description:
+      "Real-time quotes, L2 depth, trade prints, and historical OHLCV across equities, crypto, privates, pre-IPO, fixed income, commodities, and FX via REST, SSE, WebSocket.",
+    href: `${DOCS}/market-data`,
+    color: "#22D3EE",
+  },
+  {
+    icon: ApiIcon,
+    title: "Multi-Language SDKs",
+    description:
+      "@luxfi/trading for TypeScript, Python, Go, Rust, and C++. Unified liquidity aggregation, smart routing, execution algorithms, and risk management.",
+    href: `${DOCS}/sdk`,
+    color: "#A855F7",
+  },
+  {
+    icon: BankIcon,
+    title: "Broker-Dealer Partners",
+    description:
+      "Omnibus, fully-disclosed, and institutional account structures for registered BDs. Pre-cleared order flow, drop-copy feeds, and regulatory reporting.",
+    href: `${DOCS}/broker-dealers`,
+    color: "#0EA5E9",
+  },
+];
+
 
 type Product = (typeof tradingProducts)[number];
 
@@ -336,10 +379,20 @@ export default function Products() {
         <SectionHeader>
           <SectionTitle>Infrastructure & Security</SectionTitle>
           <SectionSubtitle>
-            Post-quantum, FHE, multi-chain settlement, and the ZAP wire protocol.
+            Post-quantum, FHE, multi-chain settlement, and the ZAP ZK attestation protocol.
           </SectionSubtitle>
         </SectionHeader>
         <ProductGrid products={infraProducts} />
+      </Section>
+
+      <Section>
+        <SectionHeader>
+          <SectionTitle>Compliance, Data & Access</SectionTitle>
+          <SectionSubtitle>
+            Regulated market data, multi-language SDKs, compliance automation, and broker-dealer integration.
+          </SectionSubtitle>
+        </SectionHeader>
+        <ProductGrid products={complianceProducts} />
       </Section>
 
       <CTASection>

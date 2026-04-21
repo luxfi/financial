@@ -132,31 +132,31 @@ const platformItems = [
   },
 ];
 
-// Solutions dropdown content - Lux as "Galileo of DeFi"
+// Solutions dropdown content - aligned to real industry slugs
 const solutionItems = {
   topCustomers: [
-    { title: "DeFi Protocols", description: "Fiat on/off ramps & stablecoin infrastructure", href: "/solutions/defi" },
-    { title: "Crypto Exchanges", description: "Banking rails, custody & compliance", href: "/solutions/exchanges" },
-    { title: "Neobanks & Fintechs", description: "White-label accounts & card issuing", href: "/solutions/neobanks" },
-    { title: "Stablecoin Issuers", description: "Mint, redeem & reserve management", href: "/solutions/stablecoins" },
-    { title: "Web3 Wallets", description: "Fiat integration & payment rails", href: "/solutions/wallets" },
-    { title: "Cross-Border Platforms", description: "Global payments & FX optimization", href: "/solutions/cross-border" },
+    { title: "Banks", description: "Digital asset banking, custody, multi-rail payments", href: "/solutions/banks" },
+    { title: "Broker-Dealers", description: "ATS access, FIX 4.4, ZAP binary co-location", href: "/solutions/broker-dealers" },
+    { title: "Exchanges", description: "White-label CEX, DEX, AMM infrastructure", href: "/solutions/exchanges" },
+    { title: "Market Makers", description: "Sub-100μs ZAP + GPU matching at Equinix NY5", href: "/solutions/market-makers" },
+    { title: "Asset Managers", description: "Multi-asset portfolios, execution algos, MCP", href: "/solutions/asset-managers" },
+    { title: "Hedge Funds", description: "16-venue SOR, TCA, FHE confidential positions", href: "/solutions/hedge-funds" },
   ],
   infrastructure: [
-    { title: "Orchestration API", description: "Unified API for all payment rails", href: "/products/orchestration" },
-    { title: "Multi-Chain Wallets", description: "MPC custody across 8+ chains", href: "/products/wallets" },
-    { title: "Stablecoin Rails", description: "USDC, USDT, PYUSD, EURC, USDY", href: "/products/stablecoins" },
-    { title: "Banking-as-a-Service", description: "IBANs, accounts & cards", href: "/products/baas" },
-    { title: "Compliance Suite", description: "KYC, AML & sanctions screening", href: "/products/compliance" },
-    { title: "Treasury Management", description: "FX hedging & yield optimization", href: "/products/treasury" },
+    { title: "Family Offices", description: "Private securities, pre-IPO, tokenized assets", href: "/solutions/family-offices" },
+    { title: "Wealth Management", description: "RIA + private bank infrastructure", href: "/solutions/wealth-management" },
+    { title: "Corporate Treasury", description: "Multi-currency, stablecoin, tokenized T-Bills", href: "/solutions/corporate-treasury" },
+    { title: "Sovereign Wealth", description: "Post-quantum custody, FHE, Ringtail consensus", href: "/solutions/sovereign-wealth" },
+    { title: "Insurance", description: "Instant claims, 200+ country premium collection", href: "/solutions/insurance" },
+    { title: "FinTech", description: "White-label neobanks, card issuing, yield", href: "/solutions/fintech" },
   ],
   emerging: [
-    { title: "AI & Agents", description: "Autonomous payment infrastructure", href: "/solutions/ai-agents" },
-    { title: "RWA Tokenization", description: "Real-world asset settlement", href: "/solutions/rwa" },
-    { title: "PayFi", description: "Payment financing & yield", href: "/solutions/payfi" },
-    { title: "DAO Treasury", description: "On-chain treasury management", href: "/solutions/dao" },
-    { title: "Gaming & Metaverse", description: "In-game economies & payouts", href: "/solutions/gaming" },
-    { title: "Creator Platforms", description: "Global creator payouts", href: "/solutions/creators" },
+    { title: "InsurTech", description: "Parametric insurance with smart contracts", href: "/solutions/insurtech" },
+    { title: "Crypto Funds", description: "Multi-chain treasury, DeFi, validator ops", href: "/solutions/crypto" },
+    { title: "Real Estate", description: "Tokenized properties, fractional ownership", href: "/solutions/real-estate" },
+    { title: "Gaming", description: "Player wallets, NFT marketplace, token economies", href: "/solutions/gaming" },
+    { title: "SaaS Platforms", description: "Embedded banking, subscriptions, marketplace", href: "/solutions/saas" },
+    { title: "NGOs & DAOs", description: "Multi-sig treasury, quadratic funding, grants", href: "/solutions/ngo" },
   ],
 };
 

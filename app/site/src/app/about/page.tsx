@@ -110,14 +110,16 @@ const entities = [
 ];
 
 const capabilities = [
-  "Instant cross-chain settlement (no bridges)",
-  "Native multi-chain liquidity (15+ networks)",
-  "Global fiat rails (ACH, SEPA, SWIFT, PIX, SPEI)",
-  "Multi-stablecoin support (USDC, USDT, EURC)",
-  "MPC self-custody with HSM integration",
-  "Built-in KYC/AML and sanctions screening",
-  "Full REST/GraphQL APIs with webhooks",
-  "Open-source infrastructure (github.com/luxfi)",
+  "Regulated in UK (FCA), Luxembourg (CSSF), IoM (FSA), and US (SEC/FINRA)",
+  "Integrated ATS + federated broker across 16 venues",
+  "Post-quantum crypto: ML-DSA, ML-KEM, SLH-DSA, Ringtail",
+  "CKKS FHE for confidential order matching and analytics",
+  "GPU-accelerated matching (434M orders/sec verified)",
+  "REST, WebSocket, FIX 4.4, and ZAP binary (~100μs)",
+  "MPC + HSM custody (FIPS 140-2 Level 3)",
+  "KYC/AML/Sanctions (Jumio, Onfido, Chainalysis, Elliptic)",
+  "FATF Travel Rule + OATS/CAT/ATS-N filings",
+  "Model Context Protocol (MCP) for agentic trading",
 ];
 
 export default function About() {
