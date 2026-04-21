@@ -97,9 +97,11 @@ export default function ChatWidget() {
     setInput("");
     setIsLoading(true);
 
-    // RAG-backed chat against hanzo/cloud /v1/chat-docs (indexed lux docs).
-    // Auth uses a publishable key (pk-*) — origin-restricted server-side.
-    const publishableKey = process.env.NEXT_PUBLIC_LUX_PK ?? ''
+    // Auth: widget key (hz_*) — origin-restricted server-side by the gateway.
+    // Endpoint: /v1/chat-docs does RAG over indexed lux docs (Meilisearch+Qdrant)
+    // and falls back to plain LLM if no index configured. /v1/chat/completions
+    // works too for environments where RAG isn't wanted.
+    const widgetKey = process.env.NEXT_PUBLIC_LUX_WIDGET_KEY ?? 'hz_widget_public'
     const endpoint = process.env.NEXT_PUBLIC_LUX_CHAT_URL ?? 'https://api.hanzo.ai/v1/chat-docs'
     const assistantId = (Date.now() + 1).toString()
     setMessages((prev) => [
@@ -112,7 +114,7 @@ export default function ChatWidget() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          ...(publishableKey ? { Authorization: `Bearer ${publishableKey}` } : {}),
+          ...(widgetKey ? { Authorization: `Bearer ${widgetKey}` } : {}),
         },
         body: JSON.stringify({
           messages: [
