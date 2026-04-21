@@ -98,11 +98,10 @@ export default function ChatWidget() {
     setIsLoading(true);
 
     // Auth: widget key (hz_*) — origin-restricted server-side by the gateway.
-    // Endpoint: /v1/chat-docs does RAG over indexed lux docs (Meilisearch+Qdrant)
-    // and falls back to plain LLM if no index configured. /v1/chat/completions
-    // works too for environments where RAG isn't wanted.
-    const widgetKey = process.env.NEXT_PUBLIC_LUX_WIDGET_KEY ?? 'hz_widget_public'
-    const endpoint = process.env.NEXT_PUBLIC_LUX_CHAT_URL ?? 'https://api.hanzo.ai/v1/chat-docs'
+    // Endpoint: /v1/chat-docs does RAG over indexed docs (Meilisearch+Qdrant)
+    // and falls back to plain LLM if no index configured.
+    const widgetKey = process.env.NEXT_PUBLIC_WIDGET_KEY ?? 'hz_widget_public'
+    const endpoint = process.env.NEXT_PUBLIC_CHAT_URL ?? 'https://api.hanzo.ai/v1/chat-docs'
     const assistantId = (Date.now() + 1).toString()
     setMessages((prev) => [
       ...prev,
