@@ -98,10 +98,11 @@ export default function ChatWidget() {
     setIsLoading(true);
 
     // Auth: widget key (hz_*) — origin-restricted server-side by the gateway.
-    // Endpoint: /v1/chat-docs does RAG over indexed docs (Meilisearch+Qdrant)
-    // and falls back to plain LLM if no index configured.
+    // Endpoint: /v1/chat/completions is always available. Set NEXT_PUBLIC_CHAT_URL
+    // to https://api.hanzo.ai/v1/chat-docs once per-brand RAG index is ready.
     const widgetKey = process.env.NEXT_PUBLIC_WIDGET_KEY ?? 'hz_widget_public'
-    const endpoint = process.env.NEXT_PUBLIC_CHAT_URL ?? 'https://api.hanzo.ai/v1/chat-docs'
+    const endpoint = process.env.NEXT_PUBLIC_CHAT_URL ?? 'https://api.hanzo.ai/v1/chat/completions'
+    const model = process.env.NEXT_PUBLIC_CHAT_MODEL ?? 'claude-haiku-4-5'
     const assistantId = (Date.now() + 1).toString()
     setMessages((prev) => [
       ...prev,
@@ -109,19 +110,26 @@ export default function ChatWidget() {
     ]);
 
     try {
+      const isChatDocs = endpoint.includes('/chat-docs')
+      const body: Record<string, unknown> = {
+        messages: [
+          { role: "system", content: `Current page: ${pageContext}` },
+          ...messages.slice(-10).map((m) => ({ role: m.role, content: m.content })),
+          { role: "user", content: messageText.trim() },
+        ],
+      }
+      if (!isChatDocs) {
+        body.model = model
+        body.max_tokens = 500
+      }
+
       const response = await fetch(endpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           ...(widgetKey ? { Authorization: `Bearer ${widgetKey}` } : {}),
         },
-        body: JSON.stringify({
-          messages: [
-            { role: "system", content: `Current page: ${pageContext}` },
-            ...messages.slice(-10).map((m) => ({ role: m.role, content: m.content })),
-            { role: "user", content: messageText.trim() },
-          ],
-        }),
+        body: JSON.stringify(body),
       });
 
       if (!response.ok || !response.body) {
@@ -129,30 +137,41 @@ export default function ChatWidget() {
         throw new Error(errText || `HTTP ${response.status}`);
       }
 
-      // AI SDK v4 data-stream protocol: newline-delimited `0:"token"` lines.
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-      let buf = "";
-      while (true) {
-        const { value, done } = await reader.read();
-        if (done) break;
-        buf += decoder.decode(value, { stream: true });
-        const lines = buf.split("\n");
-        buf = lines.pop() ?? "";
-        for (const line of lines) {
-          const trimmed = line.trim();
-          if (!trimmed) continue;
-          const colon = trimmed.indexOf(":");
-          if (colon < 0) continue;
-          const tag = trimmed.slice(0, colon);
-          if (tag !== "0") continue;
-          try {
-            const token = JSON.parse(trimmed.slice(colon + 1)) as string;
-            setMessages((prev) =>
-              prev.map((m) => (m.id === assistantId ? { ...m, content: m.content + token } : m)),
-            );
-          } catch {
-            // skip malformed
+      const ctype = response.headers.get("content-type") ?? ""
+
+      if (ctype.includes("application/json")) {
+        // OpenAI-style non-streamed response
+        const data = await response.json();
+        const content = data?.choices?.[0]?.message?.content ?? ""
+        setMessages((prev) =>
+          prev.map((m) => (m.id === assistantId ? { ...m, content } : m)),
+        );
+      } else {
+        // AI SDK v4 data-stream protocol (`0:"token"` lines) from /v1/chat-docs.
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let buf = "";
+        while (true) {
+          const { value, done } = await reader.read();
+          if (done) break;
+          buf += decoder.decode(value, { stream: true });
+          const lines = buf.split("\n");
+          buf = lines.pop() ?? "";
+          for (const line of lines) {
+            const trimmed = line.trim();
+            if (!trimmed) continue;
+            const colon = trimmed.indexOf(":");
+            if (colon < 0) continue;
+            const tag = trimmed.slice(0, colon);
+            if (tag !== "0") continue;
+            try {
+              const token = JSON.parse(trimmed.slice(colon + 1)) as string;
+              setMessages((prev) =>
+                prev.map((m) => (m.id === assistantId ? { ...m, content: m.content + token } : m)),
+              );
+            } catch {
+              // skip malformed
+            }
           }
         }
       }
