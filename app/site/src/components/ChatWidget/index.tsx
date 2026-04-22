@@ -98,10 +98,10 @@ export default function ChatWidget() {
     setIsLoading(true);
 
     // Auth: widget key (hz_*) — origin-restricted server-side by the gateway.
-    // Endpoint: /v1/chat/completions is always available. Set NEXT_PUBLIC_CHAT_URL
-    // to https://api.hanzo.ai/v1/chat-docs once per-brand RAG index is ready.
+    // /v1/chat is a unified endpoint: plain LLM by default, retrieval when
+    // WIDGET_RETRIEVAL=1 on the server or X-Retrieval header is set.
     const widgetKey = process.env.NEXT_PUBLIC_WIDGET_KEY ?? 'hz_widget_public'
-    const endpoint = process.env.NEXT_PUBLIC_CHAT_URL ?? 'https://api.hanzo.ai/v1/chat/completions'
+    const endpoint = process.env.NEXT_PUBLIC_CHAT_URL ?? 'https://api.hanzo.ai/v1/chat'
     const model = process.env.NEXT_PUBLIC_CHAT_MODEL ?? 'claude-haiku-4-5'
     const assistantId = (Date.now() + 1).toString()
     setMessages((prev) => [
@@ -110,17 +110,14 @@ export default function ChatWidget() {
     ]);
 
     try {
-      const isChatDocs = endpoint.includes('/chat-docs')
       const body: Record<string, unknown> = {
         messages: [
           { role: "system", content: `Current page: ${pageContext}` },
           ...messages.slice(-10).map((m) => ({ role: m.role, content: m.content })),
           { role: "user", content: messageText.trim() },
         ],
-      }
-      if (!isChatDocs) {
-        body.model = model
-        body.max_tokens = 500
+        model,
+        max_tokens: 500,
       }
 
       const response = await fetch(endpoint, {
