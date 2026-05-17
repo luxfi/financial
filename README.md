@@ -25,4 +25,4 @@ docker buildx build --platform linux/amd64 -t ghcr.io/luxfi/lux-financial:latest
 
 ## License
 
-Apache License 2.0
+All Rights Reserved. See [LICENSE](LICENSE) and [LICENSING.md](LICENSING.md) — this repository belongs to the patent-protected tier of the Lux three-tier IP strategy. For licensing inquiries, contact `licensing@lux.network`.
