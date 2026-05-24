@@ -1,0 +1,11 @@
+name = "lux-financial"
+compatibility_date = "2026-05-01"
+pages_build_output_dir = "out"
+
+# Custom domains attached to this Pages project:
+#   lux.financial
+#   www.lux.financial
+# Configured in Cloudflare dashboard or via:
+#   wrangler pages deployment create --branch main
+#   wrangler pages domains add lux.financial --project-name lux-financial
+#   wrangler pages domains add www.lux.financial --project-name lux-financial
