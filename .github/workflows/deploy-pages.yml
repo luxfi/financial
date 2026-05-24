@@ -12,7 +12,7 @@ concurrency:
 jobs:
   site:
     name: deploy lux.financial
-    runs-on: lux-build-linux-amd64
+    runs-on: lux-build
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -35,7 +35,7 @@ jobs:
 
   console:
     name: deploy app.lux.financial
-    runs-on: lux-build-linux-amd64
+    runs-on: lux-build
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
