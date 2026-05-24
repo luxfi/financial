@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { LUX_BRAND as _LUX_BRAND } from "@luxbank/brand";
 import styled from "styled-components";
 import AnimatedDiv from "@/components/AnimatedDiv";
 
@@ -135,7 +136,7 @@ export default function PlatformLaunchPressRelease() {
 
                 <ContactSection>
                   <ContactTitle>Media Contact</ContactTitle>
-                  <ContactEmail href="mailto:press@lux.financial">press@lux.financial</ContactEmail>
+                  <ContactEmail href={`mailto:${_LUX_BRAND.contactEmails.press}`}>{_LUX_BRAND.contactEmails.press}</ContactEmail>
                 </ContactSection>
 
                 <SourceLine>SOURCE Lux Industries Inc</SourceLine>
@@ -180,7 +181,7 @@ export default function PlatformLaunchPressRelease() {
               <SidebarTitle>Contact</SidebarTitle>
               <ContactInfo>
                 <p><strong>Press Inquiries</strong></p>
-                <p><a href="mailto:press@lux.financial">press@lux.financial</a></p>
+                <p><a href={`mailto:${_LUX_BRAND.contactEmails.press}`}>{_LUX_BRAND.contactEmails.press}</a></p>
                 <p style={{ marginTop: '16px' }}><strong>Partnership Inquiries</strong></p>
                 <p><a href="mailto:partnerships@lux.financial">partnerships@lux.financial</a></p>
               </ContactInfo>

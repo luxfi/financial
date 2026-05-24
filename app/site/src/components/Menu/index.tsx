@@ -7,6 +7,7 @@ import { LuxLogo } from "@/components/Logo";
 import CommandPalette from "@/components/CommandPalette";
 import NavDropdown from "@/components/NavDropdown";
 import { useThemeMode } from "@/context/ThemeContext";
+import { LUX_BRAND } from "@luxbank/brand";
 
 import { CustomButton, SecondaryButton } from "../Button";
 import {
@@ -137,7 +138,7 @@ export default function Menu() {
             </MenuItem>
             <MenuItem
               $active={false}
-              href="https://docs.lux.financial"
+              href={LUX_BRAND.urls.docs}
               target="_blank"
             >
               Docs
@@ -183,7 +184,7 @@ export default function Menu() {
             </MenuItem>
             <MenuItem
               $active={false}
-              href="https://docs.lux.financial"
+              href={LUX_BRAND.urls.docs}
               target="_blank"
               onClick={() => setOpenMenu(false)}
             >
@@ -191,7 +192,7 @@ export default function Menu() {
             </MenuItem>
             <MenuItem
               $active={false}
-              href="https://app.lux.financial/login"
+              href={LUX_BRAND.urls.appLogin}
               target="_blank"
               onClick={() => setOpenMenu(false)}
             >
@@ -221,7 +222,7 @@ export default function Menu() {
 
             <Link
               target="_blank"
-              href={"https://app.lux.financial"}
+              href={LUX_BRAND.urls.app}
               onClick={() => {
                 setOpenMenu(false);
               }}
@@ -230,7 +231,7 @@ export default function Menu() {
             </Link>
             <Link
               target="_blank"
-              href={"https://cal.com/luxfi"}
+              href={LUX_BRAND.urls.schedule}
               onClick={() => {
                 setOpenMenu(false);
               }}

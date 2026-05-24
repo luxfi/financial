@@ -56,7 +56,8 @@ const DeFiIcon = () => (
   </svg>
 );
 
-const DOCS = "https://docs.lux.financial/docs";
+import { LUX_BRAND as _LUX_BRAND_DOCS } from "@luxbank/brand";
+const DOCS = `${_LUX_BRAND_DOCS.urls.docs}/docs`;
 
 const tradingCapabilities = [
   {
@@ -128,10 +129,10 @@ export default function OnlinePlatform() {
             browser, a FIX session, or an AI agent.
           </HeroSubtitle>
           <HeroButtons>
-            <Link href="https://app.lux.financial/registration" target="_blank">
+            <Link href={_LUX_BRAND_DOCS.urls.appRegistration} target="_blank">
               <CustomButton>Get Started</CustomButton>
             </Link>
-            <Link href="https://docs.lux.financial" target="_blank" rel="noopener noreferrer">
+            <Link href={_LUX_BRAND_DOCS.urls.docs} target="_blank" rel="noopener noreferrer">
               <SecondaryButton>View Docs</SecondaryButton>
             </Link>
           </HeroButtons>
@@ -229,7 +230,7 @@ export default function OnlinePlatform() {
         <CTASubtitle>
           Talk to our team about the right solution for your business.
         </CTASubtitle>
-        <Link href="https://cal.com/luxfi" target="_blank">
+        <Link href={_LUX_BRAND_DOCS.urls.schedule} target="_blank">
           <CustomButton>Talk to Sales</CustomButton>
         </Link>
       </CTASection>

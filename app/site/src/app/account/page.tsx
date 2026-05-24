@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { LUX_BRAND as _LUX_BRAND } from "@luxbank/brand";
 import styled from "styled-components";
 import { useState } from "react";
 
@@ -325,7 +326,7 @@ export default function Account() {
             Your brand, our technology.
           </HeroSubtitle>
           <HeroButtons>
-            <Link href="https://app.lux.financial/registration" target="_blank">
+            <Link href={_LUX_BRAND.urls.appRegistration} target="_blank">
               <CustomButton>Get Started</CustomButton>
             </Link>
             <Link href="/contact">
@@ -420,7 +421,7 @@ export default function Account() {
               Clean APIs, comprehensive documentation, and a sandbox environment.
               Go from zero to integration in days.
             </SectionSubtitle>
-            <Link href="https://docs.lux.financial" target="_blank">
+            <Link href={_LUX_BRAND.urls.docs} target="_blank">
               <SecondaryButton>View Documentation →</SecondaryButton>
             </Link>
           </div>
@@ -450,7 +451,7 @@ export default function Account() {
         <CTASubtitle>
           Create an account and explore the platform with our sandbox environment.
         </CTASubtitle>
-        <Link href="https://app.lux.financial/registration" target="_blank">
+        <Link href={_LUX_BRAND.urls.appRegistration} target="_blank">
           <CustomButton>Create Account</CustomButton>
         </Link>
       </CTASection>

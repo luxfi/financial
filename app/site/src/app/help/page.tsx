@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { LUX_BRAND as _LUX_BRAND } from "@luxbank/brand";
 import Link from "next/link";
 import styled from "styled-components";
 import { DeviceSize } from "@/styles/theme/default";
@@ -55,7 +56,7 @@ const ArrowIcon = () => (
   </svg>
 );
 
-const DOCS_BASE = "https://docs.lux.financial/docs";
+const DOCS_BASE = "{`${_LUX_BRAND.urls.docs}/docs`}";
 
 const categories = [
   {
@@ -246,7 +247,7 @@ export default function Help() {
             <RouteText>
               Live uptime dashboards, scheduled maintenance windows, and incident history.
             </RouteText>
-            <RouteLink href="https://status.lux.financial" target="_blank" rel="noopener noreferrer">
+            <RouteLink href={_LUX_BRAND.urls.status} target="_blank" rel="noopener noreferrer">
               <StatusIcon /> View status
             </RouteLink>
           </RouteCard>

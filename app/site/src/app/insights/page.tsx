@@ -1,6 +1,7 @@
 "use client";
 
 import styled from "styled-components";
+import { LUX_BRAND as _LUX_BRAND } from "@luxbank/brand";
 import AnimatedDiv from "@/components/AnimatedDiv";
 import BannerWithCard from "@/components/BannerWithCard";
 
@@ -199,10 +200,10 @@ export default function InsightsPage() {
             Access our full market data API for real-time stablecoin analytics.
           </CTAText>
           <CTAButtons>
-            <CTAButton href="https://docs.lux.financial" target="_blank" rel="noopener noreferrer">
+            <CTAButton href={_LUX_BRAND.urls.docs} target="_blank" rel="noopener noreferrer">
               View API Docs
             </CTAButton>
-            <CTAButtonSecondary href="https://cal.com/luxfi" target="_blank">
+            <CTAButtonSecondary href={_LUX_BRAND.urls.schedule} target="_blank">
               Talk to Sales
             </CTAButtonSecondary>
           </CTAButtons>

@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { LUX_BRAND as _LUX_BRAND } from "@luxbank/brand";
 import { CustomButton, SecondaryButton } from "@/components/Button";
 import {
   PageContainer,
@@ -127,7 +128,7 @@ export default function CrossBorder() {
             <Link href="/contact">
               <CustomButton>Get Started</CustomButton>
             </Link>
-            <Link href="https://docs.lux.financial/guides/cross-border" target="_blank">
+            <Link href={`${_LUX_BRAND.urls.docs}/guides/cross-border`} target="_blank">
               <SecondaryButton>View API Docs</SecondaryButton>
             </Link>
           </HeroButtons>
@@ -341,7 +342,7 @@ console.<span class="property">log</span>(payment);
         <CTASubtitle>
           Get API access and start processing cross-border payments.
         </CTASubtitle>
-        <Link href="https://cal.com/luxfi" target="_blank">
+        <Link href={_LUX_BRAND.urls.schedule} target="_blank">
           <CustomButton>Talk to Sales</CustomButton>
         </Link>
       </CTASection>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { LUX_BRAND as _LUX_BRAND } from "@luxbank/brand";
 import styled from "styled-components";
 import { CustomButton, SecondaryButton } from "@/components/Button";
 import AnimatedDiv from "@/components/AnimatedDiv";
@@ -147,7 +148,7 @@ export default function CareersPage() {
           <CTASubtitle>
             We&apos;re a remote-first team building at the intersection of crypto, security, and traditional finance.
           </CTASubtitle>
-          <Link href="mailto:careers@lux.financial">
+          <Link href={`mailto:${_LUX_BRAND.contactEmails.careers}`}>
             <CustomButton>Get in touch</CustomButton>
           </Link>
         </CTASection>

@@ -4,7 +4,8 @@ import styled from "styled-components";
 import Link from "next/link";
 import { CustomButton, SecondaryButton } from "@/components/Button";
 
-const DOCS = "https://docs.lux.financial/docs";
+import { LUX_BRAND as _LUX_BRAND_DOCS } from "@luxbank/brand";
+const DOCS = `${_LUX_BRAND_DOCS.urls.docs}/docs`;
 
 const bankFeatures = [
   {
@@ -161,7 +162,7 @@ export default function BanksPage() {
           Launch new products faster, reduce costs, and serve customers globally.
         </HeroSubtitle>
         <HeroButtons>
-          <Link href="https://cal.com/luxfi" target="_blank">
+          <Link href={_LUX_BRAND_DOCS.urls.schedule} target="_blank">
             <CustomButton>Schedule Executive Briefing</CustomButton>
           </Link>
           <Link href="/security">
@@ -322,7 +323,7 @@ export default function BanksPage() {
           Our team is ready to discuss your specific requirements.
         </CTASubtitle>
         <CTAButtons>
-          <Link href="https://cal.com/luxfi" target="_blank">
+          <Link href={_LUX_BRAND_DOCS.urls.schedule} target="_blank">
             <CustomButton>Schedule Demo</CustomButton>
           </Link>
           <Link href="/contact">

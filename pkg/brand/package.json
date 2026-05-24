@@ -1,6 +1,6 @@
 {
   "name": "@luxbank/brand",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Centralized brand and jurisdiction configuration for Lux Financial",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

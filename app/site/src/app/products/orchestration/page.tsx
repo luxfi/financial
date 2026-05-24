@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { LUX_BRAND as _LUX_BRAND } from "@luxbank/brand";
 import { CustomButton, SecondaryButton } from "@/components/Button";
 import {
   PageContainer,
@@ -126,7 +127,7 @@ export default function Orchestration() {
             <Link href="/contact">
               <CustomButton>Get Started</CustomButton>
             </Link>
-            <Link href="https://docs.lux.financial/guides/payments" target="_blank">
+            <Link href={`${_LUX_BRAND.urls.docs}/guides/payments`} target="_blank">
               <SecondaryButton>View API Docs</SecondaryButton>
             </Link>
           </HeroButtons>
@@ -321,7 +322,7 @@ console.<span class="property">log</span>(intent.<span class="property">route</s
         <CTASubtitle>
           Get API access and start building with Lux Orchestration.
         </CTASubtitle>
-        <Link href="https://cal.com/luxfi" target="_blank">
+        <Link href={_LUX_BRAND.urls.schedule} target="_blank">
           <CustomButton>Talk to Sales</CustomButton>
         </Link>
       </CTASection>

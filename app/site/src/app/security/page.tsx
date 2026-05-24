@@ -5,7 +5,8 @@ import styled from "styled-components";
 import AnimatedDiv from "@/components/AnimatedDiv";
 import BannerWithCard from "@/components/BannerWithCard";
 
-const DOCS = "https://docs.lux.financial/docs";
+import { LUX_BRAND as _LUX_BRAND_DOCS } from "@luxbank/brand";
+const DOCS = `${_LUX_BRAND_DOCS.urls.docs}/docs`;
 
 const securityFeatures = [
   {
@@ -200,8 +201,8 @@ export default function SecurityPage() {
               We work with security researchers to identify and address vulnerabilities.
               If you discover a security issue, please report it responsibly.
             </BugBountyText>
-            <BugBountyLink href="mailto:security@lux.financial">
-              security@lux.financial
+            <BugBountyLink href={`mailto:${_LUX_BRAND_DOCS.contactEmails.security}`}>
+              {_LUX_BRAND_DOCS.contactEmails.security}
             </BugBountyLink>
           </BugBountyCard>
         </Section>
@@ -212,7 +213,7 @@ export default function SecurityPage() {
           <CTAText>
             Our security team is available to discuss your specific requirements.
           </CTAText>
-          <CTAButton href="https://cal.com/luxfi" target="_blank">Talk to Sales</CTAButton>
+          <CTAButton href={_LUX_BRAND_DOCS.urls.schedule} target="_blank">Talk to Sales</CTAButton>
         </CTASection>
       </Container>
     </>

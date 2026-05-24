@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { LUX_BRAND as _LUX_BRAND } from "@luxbank/brand";
 
 import { CustomButton, SecondaryButton } from "@/components/Button";
 
@@ -529,10 +530,10 @@ export default function Home() {
             Treasury management, staking, and validators. Everything banks, funds, and crypto corporates need.
           </HeroSubtitle>
           <HeroButtons>
-            <Link href="https://app.lux.financial/registration" target="_blank">
+            <Link href={_LUX_BRAND.urls.appRegistration} target="_blank">
               <CustomButton>Get Started</CustomButton>
             </Link>
-            <Link href="https://cal.com/luxfi" target="_blank">
+            <Link href={_LUX_BRAND.urls.schedule} target="_blank">
               <SecondaryButton>Talk to Sales</SecondaryButton>
             </Link>
           </HeroButtons>
@@ -1021,7 +1022,7 @@ export default function Home() {
         </ComplianceGrid>
 
         <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-          <Link href="https://docs.lux.financial/guides/compliance" target="_blank">
+          <Link href={`${_LUX_BRAND.urls.docs}/guides/compliance`} target="_blank">
             <SecondaryButton>View Compliance Docs</SecondaryButton>
           </Link>
         </div>
@@ -1131,7 +1132,7 @@ export default function Home() {
             Our APIs are designed for developers. Clean REST endpoints, MCP server for AI operations,
             and ZAP protocol for real-time browser communication. Ship stablecoin features without the complexity.
           </DeveloperText>
-          <Link href="https://docs.lux.financial" target="_blank">
+          <Link href={_LUX_BRAND.urls.docs} target="_blank">
             <SecondaryButton>View Documentation</SecondaryButton>
           </Link>
         </DeveloperContent>
@@ -1205,7 +1206,7 @@ export default function Home() {
         <CTASubtitle>
           Banks adding crypto. Funds deploying to DeFi. Corporates managing treasury. All on post-quantum secure infrastructure.
         </CTASubtitle>
-        <Link href="https://app.lux.financial/registration" target="_blank">
+        <Link href={_LUX_BRAND.urls.appRegistration} target="_blank">
           <CustomButton>Start Building</CustomButton>
         </Link>
       </CTASection>

@@ -1,0 +1,44 @@
+{
+  "$comment": "Fictitious tenant override for a bank white-labeling the site. Apply with: LUX_BRAND_OVERRIDE=./examples/tenant-bank.example.json pnpm build",
+  "name": "Example Bank",
+  "legalName": "Example Bank, N.A.",
+  "productName": "Example",
+  "tagline": "Modern banking infrastructure for your clients.",
+  "description": "Example Bank provides chartered banking, payments, and custody to fintechs and treasurers worldwide.",
+  "domains": {
+    "primary": "examplebank.com",
+    "app":     "app.examplebank.com",
+    "docs":    "docs.examplebank.com",
+    "status":  "status.examplebank.com",
+    "api":     "api.examplebank.com"
+  },
+  "contactEmails": {
+    "general":    "hello@examplebank.com",
+    "support":    "support@examplebank.com",
+    "sales":      "sales@examplebank.com",
+    "press":      "press@examplebank.com",
+    "security":   "security@examplebank.com",
+    "compliance": "compliance@examplebank.com",
+    "legal":      "legal@examplebank.com",
+    "careers":    "careers@examplebank.com"
+  },
+  "urls": {
+    "schedule": "https://cal.com/example-bank",
+    "parent":   "https://examplebank.com"
+  },
+  "copyright": {
+    "holder":          "Example Bank, N.A.",
+    "attributionText": "An Example Financial Holdings company",
+    "startYear":       1998
+  },
+  "colors": {
+    "primary":            "#0B5FFF",
+    "primaryForeground":  "#FFFFFF",
+    "ring":               "#0B5FFF"
+  },
+  "social": {
+    "twitter":  "https://twitter.com/examplebank",
+    "linkedin": "https://linkedin.com/company/examplebank",
+    "github":   ""
+  }
+}

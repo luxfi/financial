@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { LUX_BRAND as _LUX_BRAND } from "@luxbank/brand";
 import styled from "styled-components";
 
 import { CustomButton, SecondaryButton } from "@/components/Button";
@@ -140,10 +141,10 @@ export default function About() {
             Banks, funds, and corporates worldwide trust our technology.
           </HeroSubtitle>
           <HeroButtons>
-            <Link href="https://cal.com/luxfi" target="_blank">
+            <Link href={_LUX_BRAND.urls.schedule} target="_blank">
               <CustomButton>Talk to Sales</CustomButton>
             </Link>
-            <Link href="https://docs.lux.financial" target="_blank">
+            <Link href={_LUX_BRAND.urls.docs} target="_blank">
               <SecondaryButton>Read Documentation</SecondaryButton>
             </Link>
           </HeroButtons>
@@ -272,7 +273,7 @@ export default function About() {
         <CTASubtitle>
           Talk to our team about how Lux Financial can power your financial product.
         </CTASubtitle>
-        <Link href="https://cal.com/luxfi" target="_blank">
+        <Link href={_LUX_BRAND.urls.schedule} target="_blank">
           <CustomButton>Get in Touch</CustomButton>
         </Link>
       </CTASection>

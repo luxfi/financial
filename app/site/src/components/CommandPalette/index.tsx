@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import { LUX_BRAND } from "@luxbank/brand";
 import {
   PaletteOverlay,
   PaletteContainer,
@@ -134,19 +135,19 @@ const commands: CommandItem[] = [
   { id: "security", title: "Enterprise Security", description: "SOC 2 Type II compliant", href: "/account", icon: ShieldIcon, category: "Platform", keywords: ["security", "soc", "compliance"] },
 
   // Company
-  { id: "about", title: "About Us", description: "About Lux Financial", href: "/about", icon: BuildingIcon, category: "Company", keywords: ["about", "company", "mission"] },
+  { id: "about", title: "About Us", description: `About ${LUX_BRAND.name}`, href: "/about", icon: BuildingIcon, category: "Company", keywords: ["about", "company", "mission"] },
   { id: "news", title: "News", description: "Latest updates", href: "/news", icon: NewspaperIcon, category: "Company", keywords: ["news", "blog", "updates"] },
   { id: "contact", title: "Contact", description: "Get in touch", href: "/contact", icon: UsersIcon, category: "Company", keywords: ["contact", "support", "help"] },
 
   // Resources
-  { id: "docs", title: "API Documentation", description: "Developer docs", href: "https://docs.lux.financial", icon: ApiIcon, category: "Resources", external: true, keywords: ["api", "docs", "documentation"] },
-  { id: "status", title: "System Status", description: "Platform status", href: "https://status.lux.financial", icon: ShieldIcon, category: "Resources", external: true, keywords: ["status", "uptime"] },
+  { id: "docs", title: "API Documentation", description: "Developer docs", href: LUX_BRAND.urls.docs, icon: ApiIcon, category: "Resources", external: true, keywords: ["api", "docs", "documentation"] },
+  { id: "status", title: "System Status", description: "Platform status", href: LUX_BRAND.urls.status, icon: ShieldIcon, category: "Resources", external: true, keywords: ["status", "uptime"] },
   { id: "privacy", title: "Privacy Policy", description: "Privacy information", href: "/privacy-policy", icon: FileTextIcon, category: "Resources", keywords: ["privacy", "policy"] },
   { id: "terms", title: "Terms & Conditions", description: "Terms of service", href: "/terms-and-conditions", icon: FileTextIcon, category: "Resources", keywords: ["terms", "conditions", "legal"] },
 
   // Actions
-  { id: "login", title: "Login", description: "Sign in to your account", href: "https://app.lux.financial/login", icon: LoginIcon, category: "Actions", external: true, keywords: ["login", "signin", "account"] },
-  { id: "register", title: "Register", description: "Create an account", href: "https://app.lux.financial/registration", icon: UsersIcon, category: "Actions", external: true, keywords: ["register", "signup", "create"] },
+  { id: "login", title: "Login", description: "Sign in to your account", href: LUX_BRAND.urls.appLogin, icon: LoginIcon, category: "Actions", external: true, keywords: ["login", "signin", "account"] },
+  { id: "register", title: "Register", description: "Create an account", href: LUX_BRAND.urls.appRegistration, icon: UsersIcon, category: "Actions", external: true, keywords: ["register", "signup", "create"] },
 ];
 
 interface CommandPaletteProps {

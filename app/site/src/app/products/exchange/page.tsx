@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
+import { LUX_BRAND as _LUX_BRAND } from "@luxbank/brand";
 import Link from "next/link";
 import styled from "styled-components";
 import { CustomButton, SecondaryButton } from "@/components/Button";
@@ -299,7 +300,7 @@ export default function Exchange() {
             <Link href="#book-demo">
               <CustomButton>Book a Demo</CustomButton>
             </Link>
-            <Link href="https://docs.lux.financial/guides/exchange" target="_blank">
+            <Link href={`${_LUX_BRAND.urls.docs}/guides/exchange`} target="_blank">
               <SecondaryButton>View API Docs</SecondaryButton>
             </Link>
           </HeroButtons>

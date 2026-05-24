@@ -52,95 +52,101 @@ interface FooterNavSection {
   items: FooterNavItem[];
 }
 
-const footerNav: Record<string, FooterNavSection> = {
-  products: {
-    title: "Products",
-    items: [
-      { label: "All Products", href: "/products" },
-      { label: "Exchange (CEX)", href: "/products/exchange" },
-      { label: "DEX & DeFi", href: "/products/defi" },
-      { label: "Digital Securities", href: "/products/issuance" },
-      { label: "Global Payments", href: "/products/cross-border" },
-      { label: "Wallets & Custody", href: "/products/wallets" },
-      { label: "Mobile App", href: "/products/mobile" },
-      { label: "Infrastructure", href: "/products/infrastructure" },
-    ],
-  },
-  solutions: {
-    title: "Solutions",
-    items: [
-      { label: "Banks", href: "/solutions/banks" },
-      { label: "Broker-Dealers", href: "/solutions/broker-dealers" },
-      { label: "Exchanges", href: "/solutions/exchanges" },
-      { label: "Market Makers", href: "/solutions/market-makers" },
-      { label: "Asset Managers", href: "/solutions/asset-managers" },
-      { label: "Hedge Funds", href: "/solutions/hedge-funds" },
-      { label: "Family Offices", href: "/solutions/family-offices" },
-      { label: "Corporate Treasury", href: "/solutions/corporate-treasury" },
-    ],
-  },
-  company: {
-    title: "Company",
-    items: [
-      { label: "About", href: "/about" },
-      { label: "News", href: "/news" },
-      { label: "Case Studies", href: "/case-studies" },
-      { label: "Careers", href: "/careers" },
-      { label: "Contact", href: "/contact" },
-      { label: "Lux Industries", href: "https://luxindustries.xyz", external: true },
-    ],
-  },
-  developers: {
-    title: "Developers",
-    items: [
-      { label: "Documentation", href: "https://docs.lux.financial", external: true },
-      { label: "API Reference", href: "https://docs.lux.financial/docs/api-reference-full", external: true },
-      { label: "SDKs (TS/Py/Go/Rust/C++)", href: "https://docs.lux.financial/docs/sdk", external: true },
-      { label: "MCP for Agents", href: "https://docs.lux.financial/docs/mcp", external: true },
-      { label: "Post-Quantum", href: "https://docs.lux.financial/docs/quantum", external: true },
-      { label: "FHE Coprocessor", href: "https://docs.lux.financial/docs/fhe", external: true },
-      { label: "GitHub", href: "https://github.com/luxfi", external: true },
-      { label: "Status", href: "https://status.lux.financial", external: true },
-    ],
-  },
-  research: {
-    title: "Research",
-    items: [
-      { label: "All Papers", href: "/research" },
-      { label: "Lux Papers", href: "https://github.com/luxfi/papers", external: true },
-      { label: "Lux Proofs", href: "https://github.com/luxfi/proofs", external: true },
-      { label: "Lux Audits", href: "https://github.com/luxfi/audits", external: true },
-      { label: "Hanzo Papers", href: "https://github.com/hanzoai/papers", external: true },
-      { label: "Zoo Papers", href: "https://github.com/zooai/papers", external: true },
-      { label: "Lux Protocol Specs", href: "https://lps.lux.network", external: true },
-    ],
-  },
-  opensource: {
-    title: "Open Source",
-    items: [
-      { label: "All Projects", href: "/open-source" },
-      { label: "Lux on GitHub", href: "https://github.com/luxfi", external: true },
-      { label: "Hanzo on GitHub", href: "https://github.com/hanzoai", external: true },
-      { label: "Zoo on GitHub", href: "https://github.com/zooai", external: true },
-      { label: "Hanzo S3", href: "https://github.com/hanzos3", external: true },
-      { label: "Lux Proposals (LPs)", href: "https://github.com/luxfi/LPs", external: true },
-    ],
-  },
-  legal: {
-    title: "Legal",
-    items: [
-      { label: "Privacy", href: "/privacy-policy" },
-      { label: "Terms", href: "/terms-and-conditions" },
-      { label: "Security", href: "/security" },
-    ],
-  },
-};
+// Build the footer-nav graph from the brand config so per-tenant
+// builds get the correct URLs everywhere (docs, status, parent, etc.).
+function buildFooterNav(brand: typeof LUX_BRAND): Record<string, FooterNavSection> {
+  const { urls, productName } = brand;
+  return {
+    products: {
+      title: "Products",
+      items: [
+        { label: "All Products", href: "/products" },
+        { label: "Exchange (CEX)", href: "/products/exchange" },
+        { label: "DEX & DeFi", href: "/products/defi" },
+        { label: "Digital Securities", href: "/products/issuance" },
+        { label: "Global Payments", href: "/products/cross-border" },
+        { label: "Wallets & Custody", href: "/products/wallets" },
+        { label: "Mobile App", href: "/products/mobile" },
+        { label: "Infrastructure", href: "/products/infrastructure" },
+      ],
+    },
+    solutions: {
+      title: "Solutions",
+      items: [
+        { label: "Banks", href: "/solutions/banks" },
+        { label: "Broker-Dealers", href: "/solutions/broker-dealers" },
+        { label: "Exchanges", href: "/solutions/exchanges" },
+        { label: "Market Makers", href: "/solutions/market-makers" },
+        { label: "Asset Managers", href: "/solutions/asset-managers" },
+        { label: "Hedge Funds", href: "/solutions/hedge-funds" },
+        { label: "Family Offices", href: "/solutions/family-offices" },
+        { label: "Corporate Treasury", href: "/solutions/corporate-treasury" },
+      ],
+    },
+    company: {
+      title: "Company",
+      items: [
+        { label: "About", href: "/about" },
+        { label: "News", href: "/news" },
+        { label: "Case Studies", href: "/case-studies" },
+        { label: "Careers", href: "/careers" },
+        { label: "Contact", href: "/contact" },
+        { label: brand.copyright.attributionText.replace(/^By\s+/i, ""), href: urls.parent, external: true },
+      ],
+    },
+    developers: {
+      title: "Developers",
+      items: [
+        { label: "Documentation", href: urls.docs, external: true },
+        { label: "API Reference", href: urls.apiReference, external: true },
+        { label: "SDKs (TS/Py/Go/Rust/C++)", href: `${urls.docs}/docs/sdk`, external: true },
+        { label: "MCP for Agents", href: `${urls.docs}/docs/mcp`, external: true },
+        { label: "Post-Quantum", href: `${urls.docs}/docs/quantum`, external: true },
+        { label: "FHE Coprocessor", href: `${urls.docs}/docs/fhe`, external: true },
+        ...(brand.social.github ? [{ label: "GitHub", href: brand.social.github, external: true }] : []),
+        { label: "Status", href: urls.status, external: true },
+      ],
+    },
+    research: {
+      title: "Research",
+      items: [
+        { label: "All Papers", href: "/research" },
+        { label: `${productName} Papers`, href: "https://github.com/luxfi/papers", external: true },
+        { label: `${productName} Proofs`, href: "https://github.com/luxfi/proofs", external: true },
+        { label: `${productName} Audits`, href: "https://github.com/luxfi/audits", external: true },
+        { label: "Hanzo Papers", href: "https://github.com/hanzoai/papers", external: true },
+        { label: "Zoo Papers", href: "https://github.com/zooai/papers", external: true },
+        { label: `${productName} Protocol Specs`, href: "https://lps.lux.network", external: true },
+      ],
+    },
+    opensource: {
+      title: "Open Source",
+      items: [
+        { label: "All Projects", href: "/open-source" },
+        { label: `${productName} on GitHub`, href: "https://github.com/luxfi", external: true },
+        { label: "Hanzo on GitHub", href: "https://github.com/hanzoai", external: true },
+        { label: "Zoo on GitHub", href: "https://github.com/zooai", external: true },
+        { label: "Hanzo S3", href: "https://github.com/hanzos3", external: true },
+        { label: `${productName} Proposals (LPs)`, href: "https://github.com/luxfi/LPs", external: true },
+      ],
+    },
+    legal: {
+      title: "Legal",
+      items: [
+        { label: "Privacy", href: "/privacy-policy" },
+        { label: "Terms", href: "/terms-and-conditions" },
+        { label: "Security", href: "/security" },
+      ],
+    },
+  };
+}
 
 export default function Footer() {
-  const { jurisdiction } = LUX_BRAND;
+  const { jurisdiction, copyright, social, urls } = LUX_BRAND;
   const { mode } = useThemeMode();
   const currentYear = new Date().getFullYear();
   const address = jurisdiction.legalEntity.registeredAddress;
+  const footerNav = buildFooterNav(LUX_BRAND);
 
   return (
     <FooterContainer>
@@ -197,22 +203,28 @@ export default function Footer() {
         {/* Bottom Section */}
         <CopyrightRow>
           <Copyright>
-            <a href="https://luxindustries.xyz" target="_blank" rel="noopener noreferrer">
-              By Lux Industries
+            <a href={urls.parent} target="_blank" rel="noopener noreferrer">
+              {copyright.attributionText}
             </a>
-            <span>© 2016-{currentYear} {LUX_BRAND.name}</span>
+            <span>© {copyright.startYear}-{currentYear} {copyright.holder}</span>
           </Copyright>
 
           <SocialLinks>
-            <a href="https://x.com/luxdefi" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
-              <XIcon />
-            </a>
-            <a href="https://linkedin.com/company/luxfinancial" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <LinkedInIcon />
-            </a>
-            <a href="https://github.com/luxfi" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-              <GitHubIcon />
-            </a>
+            {social.twitter && (
+              <a href={social.twitter} target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                <XIcon />
+              </a>
+            )}
+            {social.linkedin && (
+              <a href={social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <LinkedInIcon />
+              </a>
+            )}
+            {social.github && (
+              <a href={social.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <GitHubIcon />
+              </a>
+            )}
           </SocialLinks>
         </CopyrightRow>
       </ContentContainer>

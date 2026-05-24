@@ -113,7 +113,8 @@ const ApiIcon = () => (
   </svg>
 );
 
-const DOCS = "https://docs.lux.financial/docs";
+import { LUX_BRAND as _LUX_BRAND_DOCS } from "@luxbank/brand";
+const DOCS = `${_LUX_BRAND_DOCS.urls.docs}/docs`;
 
 // Core trading & venue products
 const tradingProducts = [
@@ -338,7 +339,7 @@ export default function Products() {
             <Link href="/contact">
               <CustomButton>Talk to Sales</CustomButton>
             </Link>
-            <Link href="https://docs.lux.financial" target="_blank" rel="noopener noreferrer">
+            <Link href={_LUX_BRAND_DOCS.urls.docs} target="_blank" rel="noopener noreferrer">
               <SecondaryButton>View Docs</SecondaryButton>
             </Link>
           </HeroButtons>
@@ -457,7 +458,7 @@ export default function Products() {
           <Link href="/contact">
             <CustomButton>Talk to Sales</CustomButton>
           </Link>
-          <Link href="https://docs.lux.financial" target="_blank" rel="noopener noreferrer">
+          <Link href={_LUX_BRAND_DOCS.urls.docs} target="_blank" rel="noopener noreferrer">
             <SecondaryButton>Read the Docs</SecondaryButton>
           </Link>
         </HeroButtons>

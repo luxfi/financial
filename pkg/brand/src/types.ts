@@ -170,10 +170,63 @@ export interface BrandSocial {
   youtube?: string;
 }
 
+/**
+ * Pre-computed URL/email surfaces every page consumes.
+ * Derived from `domains` + `contactEmails` by `createBrandConfig`,
+ * but each may be overridden by a tenant config.
+ */
+export interface BrandUrls {
+  // Primary public site (e.g. https://lux.financial)
+  site: string;
+  // Customer application (e.g. https://app.lux.financial)
+  app: string;
+  // Customer registration deep-link (e.g. https://app.lux.financial/registration)
+  appRegistration: string;
+  // Customer login deep-link (e.g. https://app.lux.financial/login)
+  appLogin: string;
+  // Developer docs (e.g. https://docs.lux.financial)
+  docs: string;
+  // API reference (e.g. https://docs.lux.financial/docs/api-reference-full)
+  apiReference: string;
+  // Status page (e.g. https://status.lux.financial)
+  status: string;
+  // Sales scheduling link (e.g. https://cal.com/luxfi)
+  schedule: string;
+  // Parent corporate site (e.g. https://luxindustries.xyz)
+  parent: string;
+}
+
+/**
+ * Per-role contact emails — each tenant overrides as needed.
+ * If a field is omitted, callers fall back to `general`.
+ */
+export interface BrandContactEmails {
+  general: string;
+  support: string;
+  sales: string;
+  press: string;
+  security: string;
+  compliance: string;
+  legal: string;
+  careers: string;
+}
+
+export interface BrandCopyright {
+  // Full line, e.g. "© 2016-2026 Lux Financial"
+  holder: string;
+  // Parent attribution line, e.g. "By Lux Industries"
+  attributionText: string;
+  // Earliest year shown in copyright range
+  startYear: number;
+}
+
 export interface BrandConfig {
   // Core identity
   name: string;
   legalName: string;
+  // Short, capitalized noun used as a product / service name in prose
+  // (e.g. "Lux", "Acme Pay"). Defaults to the first word of `name`.
+  productName: string;
   tagline: string;
   description: string;
 
@@ -190,7 +243,17 @@ export interface BrandConfig {
     api?: string;
     docs?: string;
     support?: string;
+    status?: string;
   };
+
+  // Pre-computed URLs (override-friendly surface for page code)
+  urls: BrandUrls;
+
+  // Per-role contact emails
+  contactEmails: BrandContactEmails;
+
+  // Copyright + attribution
+  copyright: BrandCopyright;
 
   // Social links
   social: BrandSocial;

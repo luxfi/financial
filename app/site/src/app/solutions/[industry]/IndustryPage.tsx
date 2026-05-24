@@ -1,5 +1,6 @@
 "use client";
 import { useParams } from "next/navigation";
+import { LUX_BRAND as _LUX_BRAND } from "@luxbank/brand";
 import Link from "next/link";
 import styled from "styled-components";
 import { CustomButton, SecondaryButton } from "@/components/Button";
@@ -699,10 +700,10 @@ export default function IndustryPage() {
           <HeroTitle>{data.subtitle}</HeroTitle>
           <HeroDescription>{data.description}</HeroDescription>
           <HeroButtons>
-            <Link href="https://app.lux.financial/registration" target="_blank">
+            <Link href={_LUX_BRAND.urls.appRegistration} target="_blank">
               <CustomButton>Get Started</CustomButton>
             </Link>
-            <Link href="https://cal.com/luxfi" target="_blank">
+            <Link href={_LUX_BRAND.urls.schedule} target="_blank">
               <SecondaryButton>Talk to Sales</SecondaryButton>
             </Link>
           </HeroButtons>
@@ -759,10 +760,10 @@ export default function IndustryPage() {
           Talk to our team about how Lux can power your {data.title.toLowerCase()} infrastructure.
         </CTADescription>
         <CTAButtons>
-          <Link href="https://app.lux.financial/registration" target="_blank">
+          <Link href={_LUX_BRAND.urls.appRegistration} target="_blank">
             <CustomButton>Start Free</CustomButton>
           </Link>
-          <Link href="https://cal.com/luxfi" target="_blank">
+          <Link href={_LUX_BRAND.urls.schedule} target="_blank">
             <SecondaryButton>Talk to Sales</SecondaryButton>
           </Link>
         </CTAButtons>

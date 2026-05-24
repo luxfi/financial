@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { LUX_BRAND as _LUX_BRAND } from "@luxbank/brand";
 import Link from "next/link";
 import styled, { keyframes, css } from "styled-components";
 import { DeviceSize } from "@/styles/theme/default";
@@ -1186,10 +1187,10 @@ export default function HeroSection() {
                   200+ countries. All in one platform with post-quantum security.
                 </Subhead>
                 <ButtonRow>
-                  <PrimaryButton href="https://cal.com/luxfi" target="_blank">
+                  <PrimaryButton href={_LUX_BRAND.urls.schedule} target="_blank">
                     Talk to Sales <ArrowIcon />
                   </PrimaryButton>
-                  <SecondaryBtn href="https://docs.lux.financial" target="_blank">
+                  <SecondaryBtn href={_LUX_BRAND.urls.docs} target="_blank">
                     Documentation <ExternalIcon />
                   </SecondaryBtn>
                 </ButtonRow>
@@ -1229,10 +1230,10 @@ export default function HeroSection() {
                 200+ countries.
               </Subhead>
               <ButtonRow style={{ justifyContent: 'center' }}>
-                <PrimaryButton href="https://cal.com/luxfi" target="_blank">
+                <PrimaryButton href={_LUX_BRAND.urls.schedule} target="_blank">
                   Talk to Sales <ArrowIcon />
                 </PrimaryButton>
-                <SecondaryBtn href="https://docs.lux.financial" target="_blank">
+                <SecondaryBtn href={_LUX_BRAND.urls.docs} target="_blank">
                   Documentation <ExternalIcon />
                 </SecondaryBtn>
               </ButtonRow>
@@ -1269,10 +1270,10 @@ export default function HeroSection() {
                 Fiat, crypto, stablecoins, digital securities. 200+ countries.
               </Subhead>
               <ButtonRow>
-                <PrimaryButton href="https://cal.com/luxfi" target="_blank">
+                <PrimaryButton href={_LUX_BRAND.urls.schedule} target="_blank">
                   Talk to Sales <ArrowIcon />
                 </PrimaryButton>
-                <SecondaryBtn href="https://docs.lux.financial" target="_blank">
+                <SecondaryBtn href={_LUX_BRAND.urls.docs} target="_blank">
                   Docs <ExternalIcon />
                 </SecondaryBtn>
               </ButtonRow>

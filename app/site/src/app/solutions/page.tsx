@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { LUX_BRAND as _LUX_BRAND } from "@luxbank/brand";
 import styled from "styled-components";
 import { CustomButton, SecondaryButton } from "@/components/Button";
 import { DeviceSize } from "@/styles/theme/default";
@@ -103,10 +104,10 @@ export default function SolutionsPage() {
             Banks, funds, corporates, and regulated institutions.
           </HeroSubtitle>
           <HeroButtons>
-            <Link href="https://app.lux.financial/registration" target="_blank">
+            <Link href={_LUX_BRAND.urls.appRegistration} target="_blank">
               <CustomButton>Get Started</CustomButton>
             </Link>
-            <Link href="https://cal.com/luxfi" target="_blank">
+            <Link href={_LUX_BRAND.urls.schedule} target="_blank">
               <SecondaryButton>Talk to Sales</SecondaryButton>
             </Link>
           </HeroButtons>
@@ -139,7 +140,7 @@ export default function SolutionsPage() {
         <CTASubtitle>
           Talk to our team. We&apos;ll help you find the right infrastructure for your use case.
         </CTASubtitle>
-        <Link href="https://cal.com/luxfi" target="_blank">
+        <Link href={_LUX_BRAND.urls.schedule} target="_blank">
           <CustomButton>Talk to Sales</CustomButton>
         </Link>
       </CTASection>

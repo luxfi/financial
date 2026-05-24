@@ -1,6 +1,7 @@
 "use client";
 
 import styled from "styled-components";
+import { LUX_BRAND as _LUX_BRAND } from "@luxbank/brand";
 import Link from "next/link";
 import { CustomButton } from "@/components/Button";
 
@@ -24,8 +25,8 @@ const supportChannels = [
     title: "Email Support",
     description: "Get help from our technical support team",
     icon: EmailIcon,
-    link: "mailto:support@lux.financial",
-    linkText: "support@lux.financial",
+    link: `mailto:${_LUX_BRAND.contactEmails.support}`,
+    linkText: _LUX_BRAND.contactEmails.support,
   },
   {
     title: "Enterprise Support",

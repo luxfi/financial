@@ -4,22 +4,25 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { usePathname } from "next/navigation";
 import styled, { keyframes } from "styled-components";
 import { LuxLogo } from "@/components/Logo";
+import { LUX_BRAND } from "@luxbank/brand";
 
 const BRAND_COLOR = "#FFFFFF"; // Gold accent
+const BRAND_NAME = LUX_BRAND.name;
+const PRODUCT_NAME = LUX_BRAND.productName;
 
 // Page context for AI
 const getPageContext = (pathname: string): string => {
   const contexts: Record<string, string> = {
-    "/": "Lux Financial homepage - unified financial infrastructure platform",
-    "/about": "About Lux Financial - company history and mission",
+    "/":                       `${BRAND_NAME} homepage - unified financial infrastructure platform`,
+    "/about":                  `About ${BRAND_NAME} - company history and mission`,
     "/products/orchestration": "Orchestration API - unified payment processing",
-    "/products/wallets": "Multi-chain wallet infrastructure",
-    "/products/cross-border": "Cross-border payment solutions",
-    "/products/issuance": "Stablecoin issuance platform",
-    "/insights": "Market insights and stablecoin analytics",
-    "/learn": "Educational resources about stablecoins and payments",
-    "/news": "Latest news and announcements",
-    "/contact": "Contact information",
+    "/products/wallets":       "Multi-chain wallet infrastructure",
+    "/products/cross-border":  "Cross-border payment solutions",
+    "/products/issuance":      "Stablecoin issuance platform",
+    "/insights":               "Market insights and stablecoin analytics",
+    "/learn":                  "Educational resources about stablecoins and payments",
+    "/news":                   "Latest news and announcements",
+    "/contact":                "Contact information",
   };
 
   for (const [path, context] of Object.entries(contexts)) {
@@ -28,7 +31,7 @@ const getPageContext = (pathname: string): string => {
     }
   }
 
-  return contexts[pathname] || `Lux Financial page: ${pathname}`;
+  return contexts[pathname] || `${BRAND_NAME} page: ${pathname}`;
 };
 
 interface Message {
@@ -39,10 +42,10 @@ interface Message {
 }
 
 const quickActions = [
-  { label: "What is Lux?", prompt: "What is Lux Financial and what services do you offer?" },
-  { label: "Stablecoins", prompt: "Which stablecoins does Lux support?" },
-  { label: "Get Started", prompt: "How do I get started with Lux Financial?" },
-  { label: "API Docs", prompt: "Where can I find the API documentation?" },
+  { label: `What is ${PRODUCT_NAME}?`, prompt: `What is ${BRAND_NAME} and what services do you offer?` },
+  { label: "Stablecoins",              prompt: `Which stablecoins does ${PRODUCT_NAME} support?` },
+  { label: "Get Started",              prompt: `How do I get started with ${BRAND_NAME}?` },
+  { label: "API Docs",                 prompt: "Where can I find the API documentation?" },
 ];
 
 export default function ChatWidget() {
@@ -75,7 +78,7 @@ export default function ChatWidget() {
         {
           id: "welcome",
           role: "assistant",
-          content: `Hi! I'm here to help you learn about Lux Financial. You're currently viewing ${pageContext}. How can I assist you today?`,
+          content: `Hi! I'm here to help you learn about ${BRAND_NAME}. You're currently viewing ${pageContext}. How can I assist you today?`,
           timestamp: new Date(),
         },
       ]);
@@ -178,7 +181,7 @@ export default function ChatWidget() {
           m.id === assistantId && !m.content
             ? {
                 ...m,
-                content: "Connection issue. Browse docs.lux.financial or blog.lux.network while I reconnect.",
+                content: `Connection issue. Browse ${LUX_BRAND.domains.docs ?? LUX_BRAND.urls.docs} while I reconnect.`,
               }
             : m,
         ),
@@ -214,7 +217,7 @@ export default function ChatWidget() {
                 <LuxLogo size={24} variant="white" />
               </LogoWrapper>
               <HeaderText>
-                <HeaderTitle>Lux AI</HeaderTitle>
+                <HeaderTitle>{PRODUCT_NAME} AI</HeaderTitle>
                 <HeaderSubtitle>Ask anything</HeaderSubtitle>
               </HeaderText>
             </HeaderLeft>

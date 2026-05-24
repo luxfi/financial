@@ -1,0 +1,44 @@
+{
+  "$comment": "Fictitious tenant override for a payment service provider white-labeling the site. Apply with: LUX_BRAND_OVERRIDE=./examples/tenant-psp.example.json pnpm build",
+  "name": "Acme Pay",
+  "legalName": "Acme Pay Holdings Ltd.",
+  "productName": "Acme",
+  "tagline": "Global payments, one API.",
+  "description": "Acme Pay is a multi-rail payment service provider for marketplaces, platforms, and global merchants.",
+  "domains": {
+    "primary": "acme.pay",
+    "app":     "dashboard.acme.pay",
+    "docs":    "developers.acme.pay",
+    "status":  "status.acme.pay",
+    "api":     "api.acme.pay"
+  },
+  "contactEmails": {
+    "general":    "hi@acme.pay",
+    "support":    "help@acme.pay",
+    "sales":      "talk@acme.pay",
+    "press":      "press@acme.pay",
+    "security":   "security@acme.pay",
+    "compliance": "compliance@acme.pay",
+    "legal":      "legal@acme.pay",
+    "careers":    "join@acme.pay"
+  },
+  "urls": {
+    "schedule": "https://meet.acme.pay/sales",
+    "parent":   "https://acme.pay"
+  },
+  "copyright": {
+    "holder":          "Acme Pay Holdings Ltd.",
+    "attributionText": "By Acme Pay Holdings",
+    "startYear":       2021
+  },
+  "colors": {
+    "primary":            "#FF5C00",
+    "primaryForeground":  "#FFFFFF",
+    "ring":               "#FF5C00"
+  },
+  "social": {
+    "twitter":  "https://twitter.com/acmepay",
+    "linkedin": "https://linkedin.com/company/acmepay",
+    "github":   "https://github.com/acmepay"
+  }
+}

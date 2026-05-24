@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { LUX_BRAND } from "@luxbank/brand";
 
 import { CustomButton } from "../Button";
 import Text from "../Text";
@@ -34,7 +35,7 @@ export default function UserSteps() {
           *All applications subject to acceptance and satisfactory completion of
           verification requirements.
         </Text>
-        <Link href="https://app.lux.financial/registration" target="_blank">
+        <Link href={LUX_BRAND.urls.appRegistration} target="_blank">
           <CustomButton>Open an account</CustomButton>
         </Link>
       </StepsImageContainer>

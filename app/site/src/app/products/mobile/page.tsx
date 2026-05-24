@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { LUX_BRAND as _LUX_BRAND } from "@luxbank/brand";
 import styled from "styled-components";
 import { CustomButton, SecondaryButton } from "@/components/Button";
 import {
@@ -163,7 +164,7 @@ export default function Mobile() {
             <Link href="/contact">
               <CustomButton>Get the App</CustomButton>
             </Link>
-            <Link href="https://docs.lux.financial/guides/mobile" target="_blank">
+            <Link href={`${_LUX_BRAND.urls.docs}/guides/mobile`} target="_blank">
               <SecondaryButton>View Documentation</SecondaryButton>
             </Link>
           </HeroButtons>
@@ -452,7 +453,7 @@ export default function Mobile() {
         <CTASubtitle>
           Contact us to launch your own branded mobile banking app.
         </CTASubtitle>
-        <Link href="https://cal.com/luxfi" target="_blank">
+        <Link href={_LUX_BRAND.urls.schedule} target="_blank">
           <CustomButton>Talk to Sales</CustomButton>
         </Link>
       </CTASection>

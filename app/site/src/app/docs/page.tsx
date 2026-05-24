@@ -4,7 +4,8 @@ import styled from "styled-components";
 import Link from "next/link";
 import { CustomButton } from "@/components/Button";
 
-const DOCS = "https://docs.lux.financial/docs";
+import { LUX_BRAND as _LUX_BRAND_DOCS } from "@luxbank/brand";
+const DOCS = `${_LUX_BRAND_DOCS.urls.docs}/docs`;
 
 const docCategories = [
   {
@@ -70,7 +71,7 @@ const docCategories = [
       { title: "SDKs", href: `${DOCS}/sdk` },
       { title: "MCP", href: `${DOCS}/mcp` },
       { title: "Agentic Trading", href: `${DOCS}/agentic-trading` },
-      { title: "Docs Index", href: "https://docs.lux.financial" },
+      { title: "Docs Index", href: _LUX_BRAND_DOCS.urls.docs },
     ],
   },
 ];
@@ -221,7 +222,7 @@ export default function DocsPage() {
               <StatusDescription>All systems are running normally</StatusDescription>
             </StatusText>
           </StatusContent>
-          <StatusLink href="https://status.lux.financial" target="_blank">
+          <StatusLink href={_LUX_BRAND_DOCS.urls.status} target="_blank">
             View Status Page →
           </StatusLink>
         </StatusCard>

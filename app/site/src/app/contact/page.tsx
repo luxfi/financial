@@ -217,7 +217,7 @@ export default function Contact() {
               </InfoIconContainer>
               <InfoContent>
                 <InfoTitle>Email</InfoTitle>
-                <InfoValue>hello@lux.financial</InfoValue>
+                <InfoValue>{LUX_BRAND.contactEmails.general}</InfoValue>
                 <InfoDescription>For general inquiries</InfoDescription>
               </InfoContent>
             </InfoCard>
@@ -228,7 +228,7 @@ export default function Contact() {
               </InfoIconContainer>
               <InfoContent>
                 <InfoTitle>Support</InfoTitle>
-                <InfoValue>support@lux.financial</InfoValue>
+                <InfoValue>{LUX_BRAND.contactEmails.support}</InfoValue>
                 <InfoDescription>Technical assistance</InfoDescription>
               </InfoContent>
             </InfoCard>
@@ -261,7 +261,7 @@ export default function Contact() {
             <QuickLinks>
               <QuickLinksTitle>Resources</QuickLinksTitle>
               <QuickLinksList>
-                <QuickLink href="https://docs.lux.financial" target="_blank">
+                <QuickLink href={LUX_BRAND.urls.docs} target="_blank">
                   Documentation
                   <ArrowIcon>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -277,7 +277,7 @@ export default function Contact() {
                     </svg>
                   </ArrowIcon>
                 </QuickLink>
-                <QuickLink href="https://docs.lux.financial/api-reference" target="_blank">
+                <QuickLink href={`${LUX_BRAND.urls.docs}/api-reference`} target="_blank">
                   API Reference
                   <ArrowIcon>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -285,7 +285,7 @@ export default function Contact() {
                     </svg>
                   </ArrowIcon>
                 </QuickLink>
-                <QuickLink href="https://status.lux.financial" target="_blank">
+                <QuickLink href={LUX_BRAND.urls.status} target="_blank">
                   System Status
                   <ArrowIcon>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -293,7 +293,7 @@ export default function Contact() {
                     </svg>
                   </ArrowIcon>
                 </QuickLink>
-                <QuickLink href="https://app.lux.financial/registration" target="_blank">
+                <QuickLink href={LUX_BRAND.urls.appRegistration} target="_blank">
                   Create Account
                   <ArrowIcon>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

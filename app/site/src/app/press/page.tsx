@@ -1,6 +1,7 @@
 "use client";
 
 import styled from "styled-components";
+import { LUX_BRAND as _LUX_BRAND } from "@luxbank/brand";
 import Link from "next/link";
 import { CustomButton } from "@/components/Button";
 
@@ -163,7 +164,7 @@ export default function PressPage() {
             <ActionTitle>Press Contact</ActionTitle>
             <ActionDescription>Reach our communications team</ActionDescription>
           </ActionContent>
-          <ActionEmail href="mailto:press@lux.financial">press@lux.financial</ActionEmail>
+          <ActionEmail href={`mailto:${_LUX_BRAND.contactEmails.press}`}>{_LUX_BRAND.contactEmails.press}</ActionEmail>
         </ActionCard>
       </QuickActions>
 

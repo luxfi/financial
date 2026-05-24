@@ -1,6 +1,7 @@
 "use client";
 
 import styled from "styled-components";
+import { LUX_BRAND as _LUX_BRAND } from "@luxbank/brand";
 import Link from "next/link";
 import AnimatedDiv from "@/components/AnimatedDiv";
 import BannerWithCard from "@/components/BannerWithCard";
@@ -176,10 +177,10 @@ export default function LearnPage() {
             Put your knowledge into practice with our developer documentation.
           </CTAText>
           <CTAButtons>
-            <CTAButton href="https://docs.lux.financial" target="_blank" rel="noopener noreferrer">
+            <CTAButton href={_LUX_BRAND.urls.docs} target="_blank" rel="noopener noreferrer">
               API Documentation
             </CTAButton>
-            <CTAButtonSecondary href="https://cal.com/luxfi" target="_blank">
+            <CTAButtonSecondary href={_LUX_BRAND.urls.schedule} target="_blank">
               Talk to Sales
             </CTAButtonSecondary>
           </CTAButtons>

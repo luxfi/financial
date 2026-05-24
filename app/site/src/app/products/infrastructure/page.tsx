@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { LUX_BRAND as _LUX_BRAND } from "@luxbank/brand";
 import { CustomButton, SecondaryButton } from "@/components/Button";
 import {
   PageContainer,
@@ -183,7 +184,7 @@ export default function Infrastructure() {
             <Link href="/contact">
               <CustomButton>Talk to Sales</CustomButton>
             </Link>
-            <Link href="https://docs.lux.financial/guides/infrastructure" target="_blank">
+            <Link href={`${_LUX_BRAND.urls.docs}/guides/infrastructure`} target="_blank">
               <SecondaryButton>View Documentation</SecondaryButton>
             </Link>
           </HeroButtons>
@@ -473,7 +474,7 @@ export default function Infrastructure() {
         <CTASubtitle>
           Contact us to learn how Lux Infrastructure can power your operations.
         </CTASubtitle>
-        <Link href="https://cal.com/luxfi" target="_blank">
+        <Link href={_LUX_BRAND.urls.schedule} target="_blank">
           <CustomButton>Talk to Sales</CustomButton>
         </Link>
       </CTASection>

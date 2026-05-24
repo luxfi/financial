@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { LUX_BRAND as _LUX_BRAND } from "@luxbank/brand";
 import { CustomButton, SecondaryButton } from "@/components/Button";
 import {
   PageContainer,
@@ -144,7 +145,7 @@ export default function DeFi() {
             <Link href="/contact">
               <CustomButton>Get Started</CustomButton>
             </Link>
-            <Link href="https://docs.lux.financial/guides/defi" target="_blank">
+            <Link href={`${_LUX_BRAND.urls.docs}/guides/defi`} target="_blank">
               <SecondaryButton>View Documentation</SecondaryButton>
             </Link>
           </HeroButtons>
@@ -503,7 +504,7 @@ console.<span class="property">log</span>(stats);
         <CTASubtitle>
           Launch institutional-grade DeFi products with our infrastructure.
         </CTASubtitle>
-        <Link href="https://cal.com/luxfi" target="_blank">
+        <Link href={_LUX_BRAND.urls.schedule} target="_blank">
           <CustomButton>Talk to Sales</CustomButton>
         </Link>
       </CTASection>

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import { LUX_BRAND } from "@luxbank/brand";
 import {
   DropdownContainer,
   DropdownTrigger,
@@ -226,7 +227,7 @@ export default function NavDropdown({ label, type, active }: NavDropdownProps) {
           {type === "platform" && (
             <>
               <FeaturedCard>
-                <FeaturedTitle>Lux Financial Platform</FeaturedTitle>
+                <FeaturedTitle>{LUX_BRAND.name} Platform</FeaturedTitle>
                 <FeaturedDescription>
                   Open-source crypto infrastructure for regulated financial institutions. Institutional-grade.
                 </FeaturedDescription>

@@ -1,6 +1,7 @@
 "use client";
 
 import styled from "styled-components";
+import { LUX_BRAND as _LUX_BRAND } from "@luxbank/brand";
 import Link from "next/link";
 import { CustomButton } from "@/components/Button";
 
@@ -197,7 +198,7 @@ export default function CaseStudiesPage() {
           Join the companies transforming financial infrastructure with Lux
         </CTASubtitle>
         <CTAButtons>
-          <Link href="https://cal.com/luxfi" target="_blank">
+          <Link href={_LUX_BRAND.urls.schedule} target="_blank">
             <CustomButton>Schedule Demo</CustomButton>
           </Link>
           <Link href="/contact">
