@@ -16,6 +16,10 @@ import { transfer } from './transfer';
 import { treasury } from './treasury';
 import { broker } from './broker';
 import { audit } from './audit';
+// G-22b — Stage 10.2 / 10.3 / 10.6 clients.
+import { document } from './document';
+import { comms } from './comms';
+import { tax } from './tax';
 
 export const gateway = {
   captable,
@@ -23,6 +27,9 @@ export const gateway = {
   treasury,
   broker,
   audit,
+  document,
+  comms,
+  tax,
 } as const;
 
 export type Gateway = typeof gateway;
@@ -30,4 +37,8 @@ export type Gateway = typeof gateway;
 export * from './transport';
 export * from './types';
 export * from './audit';
+// G-22b re-exports.
+export * from './document';
+export * from './comms';
+export * from './tax';
 export type { CostBasisMethod } from './captable';

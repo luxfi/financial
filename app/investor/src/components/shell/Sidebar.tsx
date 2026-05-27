@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useUnreadCount } from '@/lib/notifications';
 
 // Sidebar is the authenticated-area navigation. The route list is a flat
 // constant so any of the parallel G-22 agents adding pages (Stage 10.2 /
@@ -43,6 +44,8 @@ const GROUPS: { key: string; label: string }[] = [
 
 export function Sidebar() {
   const path = usePathname() ?? '';
+  // G-22b — shared unread badge contract for the inbox nav entry.
+  const { counts } = useUnreadCount();
   return (
     <aside
       className="border-r border-[var(--color-border)] bg-[var(--color-background)] flex flex-col py-3 px-2 min-h-0"
@@ -55,18 +58,29 @@ export function Sidebar() {
           </div>
           {NAV.filter((n) => n.group === g.key).map((n) => {
             const active = path === n.href || path.startsWith(n.href + '/');
+            const badge =
+              n.href === '/inbox' && counts.total > 0 ? counts.total : null;
             return (
               <Link
                 key={n.href}
                 href={n.href}
                 className={[
-                  'block px-3 py-2 rounded-lg text-[1.3rem] mt-px',
+                  'flex items-center justify-between px-3 py-2 rounded-lg text-[1.3rem] mt-px',
                   active
                     ? 'bg-[var(--color-surface)] text-[var(--color-foreground)]'
                     : 'text-[var(--color-secondary)] hover:text-[var(--color-foreground)] hover:bg-[var(--color-surface)]',
                 ].join(' ')}
               >
-                {n.label}
+                <span>{n.label}</span>
+                {badge !== null ? (
+                  <span
+                    aria-label={`${badge} unread`}
+                    data-testid="inbox-badge"
+                    className="bg-[var(--color-accent)] text-[var(--color-accent-fg)] text-[1.05rem] font-semibold rounded-full px-2 py-0.5 tabular-nums"
+                  >
+                    {badge > 99 ? '99+' : badge}
+                  </span>
+                ) : null}
               </Link>
             );
           })}
