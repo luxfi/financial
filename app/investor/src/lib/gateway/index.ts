@@ -20,6 +20,10 @@ import { audit } from './audit';
 import { document } from './document';
 import { comms } from './comms';
 import { tax } from './tax';
+// G-22c — Stage 10.4 / 10.5 / 10.7 / 10.8 / 10.9 clients.
+import { wallet } from './wallet';
+import { market } from './market';
+import { identity } from './identity';
 
 export const gateway = {
   captable,
@@ -30,6 +34,9 @@ export const gateway = {
   document,
   comms,
   tax,
+  wallet,
+  market,
+  identity,
 } as const;
 
 export type Gateway = typeof gateway;
